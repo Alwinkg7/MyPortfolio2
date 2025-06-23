@@ -1,24 +1,68 @@
+// src/App.tsx
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import About from './components/About';
+import Qualifications from './components/Qualifications';
+import Experience from './components/Experience';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
+import TechStack from './components/TechStack';
+import { motion } from 'framer-motion';
+
+const fadeVariant = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number = 1): any => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.2,
+      duration: 0.6,
+      ease: 'easeInOut',
+    },
+  }),
+};
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="scroll-smooth font-sans text-gray-800">
+      <Header />
+      <main className="pt-32 space-y-24">
+        <motion.div variants={fadeVariant} initial="hidden" custom={1} whileInView="visible" viewport={{ once: true }}>
+          <Hero />
+        </motion.div>
+
+        <motion.div variants={fadeVariant} initial="hidden" custom={1} whileInView="visible" viewport={{ once: true }}>
+          <About />
+        </motion.div>
+
+        <motion.div variants={fadeVariant} initial="hidden" custom={1} whileInView="visible" viewport={{ once: true }}>
+          <Qualifications />
+        </motion.div>
+
+        <motion.div variants={fadeVariant} initial="hidden" custom={1} whileInView="visible" viewport={{ once: true }}>
+          <Experience />
+        </motion.div>
+
+        <motion.div variants={fadeVariant} initial="hidden" custom={1} whileInView="visible" viewport={{ once: true }}>
+          <TechStack />
+        </motion.div>
+
+
+        <motion.div variants={fadeVariant} initial="hidden" custom={1} whileInView="visible" viewport={{ once: true }}>
+          <Projects />
+        </motion.div>
+
+        <motion.div variants={fadeVariant} initial="hidden" custom={1} whileInView="visible" viewport={{ once: true }}>
+          <Contact />
+        </motion.div>
+      </main>
+      <Footer />
+      <ScrollToTop />
+
     </div>
   );
 }
