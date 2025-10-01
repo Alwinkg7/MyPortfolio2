@@ -10,59 +10,26 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import TechStack from './components/TechStack';
-import { motion } from 'framer-motion';
-
-const fadeVariant = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number = 1): any => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.2,
-      duration: 0.6,
-      ease: 'easeInOut',
-    },
-  }),
-};
-
+// import { motion } from 'framer-motion'; // Unused import removed
 
 function App() {
   return (
-    <div className="scroll-smooth font-sans text-gray-800">
+    <div className="scroll-smooth font-sans text-gray-800 overflow-x-hidden">
       <Header />
-      <main className="pt-32 space-y-24">
-        <motion.div variants={fadeVariant} initial="hidden" custom={1} whileInView="visible" viewport={{ once: true }}>
-          <Hero />
-        </motion.div>
-
-        <motion.div variants={fadeVariant} initial="hidden" custom={1} whileInView="visible" viewport={{ once: true }}>
-          <About />
-        </motion.div>
-
-        <motion.div variants={fadeVariant} initial="hidden" custom={1} whileInView="visible" viewport={{ once: true }}>
-          <Qualifications />
-        </motion.div>
-
-        <motion.div variants={fadeVariant} initial="hidden" custom={1} whileInView="visible" viewport={{ once: true }}>
-          <Experience />
-        </motion.div>
-
-        <motion.div variants={fadeVariant} initial="hidden" custom={1} whileInView="visible" viewport={{ once: true }}>
-          <TechStack />
-        </motion.div>
-
-
-        <motion.div variants={fadeVariant} initial="hidden" custom={1} whileInView="visible" viewport={{ once: true }}>
-          <Projects />
-        </motion.div>
-
-        <motion.div variants={fadeVariant} initial="hidden" custom={1} whileInView="visible" viewport={{ once: true }}>
-          <Contact />
-        </motion.div>
+      <main className="relative">
+        {/* Hero Section - Full height */}
+        <Hero />
+        
+        {/* Other Sections */}
+        <About />
+        <Qualifications />
+        <Experience />
+        <TechStack />
+        <Projects />
+        <Contact />
       </main>
       <Footer />
       <ScrollToTop />
-
     </div>
   );
 }
