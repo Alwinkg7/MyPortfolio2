@@ -4,7 +4,7 @@ import profilePic from "../assets/portfolio1.jpg";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center gap-12 px-6 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white relative overflow-hidden">
+    <section className="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center gap-12 px-6 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white relative overflow-hidden pt-20 lg:pt-0">
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
         <div className="w-full h-full bg-gradient-to-r from-blue-500/10 to-purple-500/10"></div>
@@ -174,7 +174,7 @@ const Hero = () => {
         initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
         animate={{ opacity: 1, scale: 1, rotateY: 0 }}
         transition={{ delay: 0.8, duration: 1.0 }}
-        className="lg:flex-1 flex justify-center relative z-10"
+        className="lg:flex-1 flex justify-center relative z-10 mb-8 lg:mb-0"
       >
         <div className="relative">
           <motion.div
