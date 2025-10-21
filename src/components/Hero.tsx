@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-import profilePic from "../assets/portfolio1.jpg";
+import Image from "next/image";
 
 const Hero = () => {
   return (
@@ -185,9 +185,11 @@ const Hero = () => {
             <div className="w-full h-full bg-slate-900 rounded-full"></div>
           </motion.div>
           
-          <img
-            src={profilePic}
+          <Image
+            src="/portfolio1.jpg"
             alt="Alwin K G"
+            width={384}
+            height={384}
             className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full object-cover shadow-2xl border-4 border-white/20 backdrop-blur-sm"
           />
           

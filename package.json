@@ -21,12 +21,12 @@
     "framer-motion": "^12.6.2",
     "lightswind": "^3.1.18",
     "lucide-react": "^0.522.0",
-    "react": "^19.1.0",
+    "next": "^14.2.0",
+    "next-sitemap": "^4.2.3",
+    "react": "^18.2.0",
     "react-day-picker": "^9.11.0",
-    "react-dom": "^19.1.0",
+    "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",
-    "react-router-dom": "^7.6.2",
-    "react-scripts": "5.0.1",
     "react-type-animation": "^3.2.0",
     "styled-components": "^6.1.16",
     "three": "^0.180.0",
@@ -35,10 +35,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next build && next export",
+    "postbuild": "next-sitemap"
   },
   "eslintConfig": {
     "extends": [
@@ -59,10 +61,13 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^19.1.8",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
     "@types/react-router-dom": "^5.3.3",
     "@types/react-syntax-highlighter": "^15.5.13",
     "autoprefixer": "^10.4.21",
+    "eslint": "^9.38.0",
+    "eslint-config-next": "^15.5.6",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17"
   }
