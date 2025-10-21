@@ -12,7 +12,7 @@ export default function Document() {
         <meta name="robots" content="index, follow" />
         <meta name="language" content="English" />
         <meta name="revisit-after" content="7 days" />
-        
+        <meta name="google-site-verification" content="XE3_CiGzKFBAfMYUxsMz-HbyFCpbSz01tRWwJXQOLl4" />
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://alwinkgportfolio.vercel.app/" />
