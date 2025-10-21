@@ -47,9 +47,8 @@ export default function Document() {
         {/* Canonical URL */}
         <link rel="canonical" href="https://alwinkgportfolio.vercel.app/" />
         
-        {/* Preconnect to external domains for performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Google Site Verification - Add your verification code here */}
+        {/* <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" /> */}
         
         {/* Structured Data - JSON-LD */}
         <script
