@@ -9,7 +9,7 @@ const Hero = () => {
       <div className="absolute inset-0 opacity-20">
         <div className="w-full h-full bg-gradient-to-r from-blue-500/10 to-purple-500/10"></div>
       </div>
-      
+
       {/* Floating Elements */}
       <motion.div
         animate={{ 

@@ -47,8 +47,8 @@ export default function Document() {
         {/* Canonical URL */}
         <link rel="canonical" href="https://alwinkgportfolio.vercel.app/" />
         
-        {/* Google Site Verification - Add your verification code here */}
-        {/* <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" /> */}
+        {/* Google Site Verification */}
+        <meta name="google-site-verification" content="google46dd96954ca14052" />
         
         {/* Structured Data - JSON-LD */}
         <script
