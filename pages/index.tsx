@@ -27,17 +27,17 @@ export default function Home() {
         <meta property="og:title" content="Alwin K G - Full Stack Developer Portfolio" />
         <meta property="og:description" content="Experienced Full Stack Developer specializing in React, Node.js, TypeScript, and modern web technologies. View my portfolio showcasing web applications, mobile apps, and software solutions." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://alwinkg.dev" />
-        <meta property="og:image" content="https://alwinkg.dev/portfolio1.jpg" />
+        <meta property="og:url" content="https://alwinkgportfolio.vercel.app" />
+        <meta property="og:image" content="https://alwinkgportfolio.vercel.app/portfolio1.jpg" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Alwin K G - Full Stack Developer Portfolio" />
         <meta name="twitter:description" content="Experienced Full Stack Developer specializing in React, Node.js, TypeScript, and modern web technologies. View my portfolio showcasing web applications, mobile apps, and software solutions." />
-        <meta name="twitter:image" content="https://alwinkg.dev/portfolio1.jpg" />
+        <meta name="twitter:image" content="https://alwinkgportfolio.vercel.app/portfolio1.jpg" />
         
         {/* Canonical URL */}
-        <link rel="canonical" href="https://alwinkg.dev" />
+        <link rel="canonical" href="https://alwinkgportfolio.vercel.app" />
       </Head>
       
       <div className="scroll-smooth font-sans text-gray-800 overflow-x-hidden">

@@ -15,10 +15,10 @@ export default function Document() {
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://alwinkg.dev/" />
+        <meta property="og:url" content="https://alwinkgportfolio.vercel.app/" />
         <meta property="og:title" content="Alwin K G - Full Stack Developer Portfolio" />
         <meta property="og:description" content="Experienced Full Stack Developer specializing in React, Node.js, TypeScript, and modern web technologies. View my portfolio showcasing web applications, mobile apps, and software solutions." />
-        <meta property="og:image" content="https://alwinkg.dev/portfolio1.jpg" />
+        <meta property="og:image" content="https://alwinkgportfolio.vercel.app/portfolio1.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="Alwin K G Portfolio" />
@@ -26,10 +26,10 @@ export default function Document() {
         
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://alwinkg.dev/" />
+        <meta property="twitter:url" content="https://alwinkgportfolio.vercel.app/" />
         <meta property="twitter:title" content="Alwin K G - Full Stack Developer Portfolio" />
         <meta property="twitter:description" content="Experienced Full Stack Developer specializing in React, Node.js, TypeScript, and modern web technologies. View my portfolio showcasing web applications, mobile apps, and software solutions." />
-        <meta property="twitter:image" content="https://alwinkg.dev/portfolio1.jpg" />
+        <meta property="twitter:image" content="https://alwinkgportfolio.vercel.app/portfolio1.jpg" />
         <meta property="twitter:creator" content="@alwinkg" />
         
         {/* Additional SEO Meta Tags */}
@@ -45,7 +45,7 @@ export default function Document() {
         <link rel="manifest" href="/manifest.json" />
         
         {/* Canonical URL */}
-        <link rel="canonical" href="https://alwinkg.dev/" />
+        <link rel="canonical" href="https://alwinkgportfolio.vercel.app/" />
         
         {/* Preconnect to external domains for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -61,8 +61,8 @@ export default function Document() {
               "name": "Alwin K G",
               "jobTitle": "Full Stack Developer",
               "description": "Experienced Full Stack Developer specializing in React, Node.js, TypeScript, and modern web technologies",
-              "url": "https://alwinkg.dev",
-              "image": "https://alwinkg.dev/portfolio1.jpg",
+              "url": "https://alwinkgportfolio.vercel.app",
+              "image": "https://alwinkgportfolio.vercel.app/portfolio1.jpg",
               "sameAs": [
                 "https://github.com/alwinkg",
                 "https://linkedin.com/in/alwinkg",

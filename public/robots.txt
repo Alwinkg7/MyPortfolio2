@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://alwinkg.dev
+Host: https://alwinkgportfolio.vercel.app
 
 # Sitemaps
-Sitemap: https://alwinkg.dev/sitemap.xml
+Sitemap: https://alwinkgportfolio.vercel.app/sitemap.xml
