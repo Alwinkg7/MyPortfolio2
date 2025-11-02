@@ -12,30 +12,30 @@ const Hero = () => {
 
       {/* Floating Elements */}
       <motion.div
-        animate={{ 
+        animate={{
           y: [0, -20, 0],
-          rotate: [0, 5, 0]
+          rotate: [0, 5, 0],
         }}
-        transition={{ 
-          duration: 6, 
-          repeat: Infinity, 
-          ease: "easeInOut" 
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
         }}
         className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-20 blur-xl"
       />
       <motion.div
-        animate={{ 
+        animate={{
           y: [0, 20, 0],
-          rotate: [0, -5, 0]
+          rotate: [0, -5, 0],
         }}
-        transition={{ 
-          duration: 8, 
-          repeat: Infinity, 
-          ease: "easeInOut" 
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
         }}
         className="absolute bottom-20 right-10 w-32 h-32 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full opacity-20 blur-xl"
       />
-      
+
       {/* Text Content */}
       <div className="lg:flex-1 max-w-2xl lg:pl-12 text-center lg:text-left relative z-10">
         <motion.div
@@ -87,11 +87,15 @@ const Hero = () => {
             transition={{ delay: 1.0 }}
             className="text-lg text-gray-300 leading-relaxed max-w-xl mx-auto lg:mx-0"
           >
-            MCA graduate with hands-on experience in <span className="text-cyan-400 font-semibold">Full-Stack Development, AI/ML, and Fintech solutions</span>. 
-            I specialize in building scalable, dynamic, and AI-powered web applications that solve real-world problems.
+            MCA graduate with hands-on experience in{" "}
+            <span className="text-cyan-400 font-semibold">
+              Full-Stack Development, AI/ML, and Fintech solutions
+            </span>
+            . I specialize in building scalable, dynamic, and AI-powered web
+            applications that solve real-world problems.
           </motion.p>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2 }}
@@ -142,24 +146,24 @@ const Hero = () => {
             transition={{ delay: 1.4 }}
             className="flex flex-wrap justify-center lg:justify-start gap-6 pt-8 text-sm"
           >
-            <a 
-              href="https://www.linkedin.com/in/alwin-k-g-b60442253/" 
-              target="_blank" 
+            <a
+              href="https://www.linkedin.com/in/alwin-k-g/"
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors"
             >
               <span>LinkedIn</span>
             </a>
-            <a 
-              href="https://github.com/Alwinkg7" 
-              target="_blank" 
+            <a
+              href="https://github.com/Alwinkg7"
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors"
             >
               <span>GitHub</span>
             </a>
-            <a 
-              href="mailto:alwinkgofficial@gmail.com" 
+            <a
+              href="mailto:alwinkgofficial@gmail.com"
               className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors"
             >
               <span>Email</span>
@@ -184,7 +188,7 @@ const Hero = () => {
           >
             <div className="w-full h-full bg-slate-900 rounded-full"></div>
           </motion.div>
-          
+
           <Image
             src="/portfolio1.jpg"
             alt="Alwin K G"
@@ -192,16 +196,16 @@ const Hero = () => {
             height={384}
             className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full object-cover shadow-2xl border-4 border-white/20 backdrop-blur-sm"
           />
-          
+
           <motion.div
-            animate={{ 
+            animate={{
               scale: [1, 1.1, 1],
-              opacity: [0.5, 0.8, 0.5]
+              opacity: [0.5, 0.8, 0.5],
             }}
-            transition={{ 
-              duration: 3, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut",
             }}
             className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/20 to-purple-600/20 blur-xl"
           />

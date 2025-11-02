@@ -21,7 +21,7 @@ function Contact() {
       icon: "💼",
       title: "LinkedIn",
       value: "alwin-k-g-b60442253",
-      link: "https://www.linkedin.com/in/alwin-k-g-b60442253/",
+      link: "https://www.linkedin.com/in/alwin-k-g/",
       color: "from-blue-600 to-indigo-600"
     },
     {
