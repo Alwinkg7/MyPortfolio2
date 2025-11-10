@@ -120,7 +120,7 @@ const Hero = () => {
             </motion.a>
 
             <motion.a
-              href="https://drive.google.com/file/d/1Tgib633G7D4KK00-vDeHjMlKbP4EzBJo/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1HozMJ3XVIZsfem091npmFZQqVybi9hQ1/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-300 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300"
