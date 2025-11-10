@@ -324,7 +324,7 @@
                           ],
                         }),
                         (0, a.jsx)(d.E.a, {
-                          href: "https://drive.google.com/file/d/1HozMJ3XVIZsfem091npmFZQqVybi9hQ1/view",
+                          href: "https://drive.google.com/file/d/1HozMJ3XVIZsfem091npmFZQqVybi9hQ1/view?usp=sharing",
                           target: "_blank",
                           rel: "noopener noreferrer",
                           className:
