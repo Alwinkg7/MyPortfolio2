@@ -37,12 +37,15 @@ const Header: React.FC = () => {
           : "bg-transparent"
       } px-6 py-4 flex items-center justify-between md:px-10`}
     >
+      <a href="/">
       <motion.div
         className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
         whileHover={{ scale: 1.05 }}
+        
       >
         Alwin K G
       </motion.div>
+      </a>
 
       {/* Desktop Nav */}
       <nav className="hidden lg:block">

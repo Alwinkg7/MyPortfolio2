@@ -12,6 +12,7 @@ import { motion } from "framer-motion";
 
 const techStack = [
   { name: "Python", icon: faPython, category: "Programming Languages" },
+  { name: "C#", icon: faPython, category: "Programming Languages" },
   { name: "JavaScript", icon: faCode, category: "Programming Languages" },
   { name: "React", icon: faReact, category: "Web Development" },
   { name: "Next.js", icon: faReact, category: "Web Development" },
@@ -29,11 +30,12 @@ const techStack = [
   { name: "Material UI", icon: faCss3Alt, category: "UI Frameworks" },
   { name: "Lightswind UI", icon: faCss3Alt, category: "UI Frameworks" },
   { name: "Bootstrap", icon: faCss3Alt, category: "UI Frameworks" },
+  { name: "Shopify", icon: faCss3Alt, category: "UI Frameworks" },
   { name: "Git", icon: faGitAlt, category: "Tools" },
   { name: "Postman", icon: faCode, category: "Tools" },
   { name: "VS Code", icon: faCode, category: "Tools" },
   { name: "Cursor AI", icon: faRobot, category: "Tools" },
-  { name: "Visual Basic", icon: faCode, category: "Tools" },
+  { name: "Visual Studio", icon: faRobot, category: "Tools" },
 ];
 
 const TechStack = () => {

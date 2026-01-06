@@ -1,76 +1,77 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 // Sorted from most recent to oldest
 const experiences = [
   {
     id: 3,
-    company: 'Voleergo Solutions LLP',
-    location: 'On-site | Kochi, Kerala, India',
-    role: 'Software Developer',
-    date: 'Jun 2025 – Present',
+    company: "Voleergo Solutions LLP",
+    location: "On-site | Kochi, Kerala, India",
+    role: "Software Developer",
+    date: "Jun 2025 – Present",
     achievements: [
-      'Working on both frontend and backend development, along with database management',
-      'Building dynamic projects using ASP.NET Core Web API, Next.js, and SQL Server (SSMS)',
-      'Collaborated as part of the development team on projects such as Voleergo Academy, E-commerce Website, and Kayaking Business Website',
-      'Enhancing system reliability and performance through modern development practices',
+      "Working on both frontend and backend development, along with database management",
+      "Building dynamic, production-ready applications using ASP.NET Core Web API, Next.js, and SQL Server (SSMS)",
+      "Collaborated with the development team on projects including Voleergo Academy and E-commerce platforms",
+      "Mentored and guided interns/students in full-stack development, code quality, and best practices",
+      "Enhanced system reliability, performance, and maintainability through modern development practices",
     ],
     projects: [
       {
-        name: 'Voleergo Academy',
-        link: 'https://voleergoacademy.com/',
-        description: 'Educational platform'
+        name: "Voleergo Academy",
+        link: "https://voleergoacademy.com/",
+        description: "Educational platform",
       },
       {
-        name: 'E-commerce Website',
-        link: 'https://ecommerceqa.voleergo.com/website/home',
-        description: 'Online shopping platform (Development)'
+        name: "E-commerce Website",
+        link: "https://ecommerceqa.voleergo.com/website/home",
+        description: "Online shopping platform (Development)",
       },
       {
-        name: 'Kayaking Business Website',
-        link: 'https://walkingtrees.in/',
-        description: 'Adventure tourism platform (Development)'
-      }
-    ]
+        name: "Kayaking Business Website",
+        link: "https://walkingtrees.in/",
+        description: "Adventure tourism platform",
+      },
+    ],
   },
   {
     id: 2,
-    company: 'Calanjiyum Consultancies And Technology',
-    location: 'Remote',
-    role: 'Web Development Intern',
-    date: 'May 2025 – Aug 2025',
+    company: "Calanjiyum Consultancies And Technology",
+    location: "Remote",
+    role: "Web Development Intern",
+    date: "May 2025 – Aug 2025",
     achievements: [
-      'Developed a feedback system called Formly using PHP, React.JS, and MySQL',
-      'Built a module to display result analytics, handling frontend, backend, and database implementation',
-      'Collaborated in a team of 4 to deliver project milestones',
-      'Enhanced system functionality and user experience',
+      "Developed a feedback system called Formly using PHP, React.JS, and MySQL",
+      "Built a module to display result analytics, handling frontend, backend, and database implementation",
+      "Collaborated in a team of 4 to deliver project milestones",
+      "Enhanced system functionality and user experience",
     ],
     projects: [
       {
-        name: 'Formly',
-        link: 'https://formly1.vercel.app/',
-        description: 'Feedback system with analytics'
-      }
-    ]
+        name: "Formly",
+        link: "https://formly1.vercel.app/",
+        description: "Feedback system with analytics",
+      },
+    ],
   },
   {
     id: 1,
-    company: 'EY GDS (Ernst & Young – Global Delivery Services)',
-    location: 'with Edunet Foundation and AICTE',
-    role: 'Full Stack Web Development Intern',
-    date: 'Feb 2025 – Mar 2025',
+    company: "EY GDS (Ernst & Young – Global Delivery Services)",
+    location: "with Edunet Foundation and AICTE",
+    role: "Full Stack Web Development Intern",
+    date: "Feb 2025 – Mar 2025",
     achievements: [
-      'Gained expertise in AI tools, UI/UX design principles, and full-stack web development using the MERN stack (MongoDB, Express.js, React, Node.js)',
-      'Recognized for developing one of the top 40 best projects, earning a certificate of excellence',
-      'Built and presented project prototypes to EY experts, refining solutions based on feedback',
-      'Applied industry best practices in full-stack development',
+      "Gained expertise in AI tools, UI/UX design principles, and full-stack web development using the MERN stack (MongoDB, Express.js, React, Node.js)",
+      "Recognized for developing one of the top 40 best projects, earning a certificate of excellence",
+      "Built and presented project prototypes to EY experts, refining solutions based on feedback",
+      "Applied industry best practices in full-stack development",
     ],
     projects: [
       {
-        name: 'FinBridge',
-        link: 'https://finbridge-beta.vercel.app/guesthome/',
-        description: 'AI-powered financial management application'
-      }
-    ]
+        name: "FinBridge",
+        link: "https://finbridge-beta.vercel.app/guesthome/",
+        description: "AI-powered financial management application",
+      },
+    ],
   },
 ];
 
@@ -84,9 +85,9 @@ const Experience = () => {
       <div className="absolute inset-0 opacity-40">
         <div className="w-full h-full bg-gradient-to-r from-blue-500/10 to-purple-500/10"></div>
       </div>
-      
+
       <div className="max-w-6xl mx-auto relative z-10">
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -99,7 +100,7 @@ const Experience = () => {
         <div className="space-y-12 relative">
           {/* Timeline Line */}
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 hidden lg:block"></div>
-          
+
           {experiences.map((exp, index) => (
             <motion.div
               key={exp.id}
@@ -111,7 +112,7 @@ const Experience = () => {
             >
               {/* Timeline Dot */}
               <div className="absolute left-6 top-8 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full border-4 border-white shadow-lg hidden lg:block z-10" />
-              
+
               <div className="lg:ml-20">
                 <motion.div
                   whileHover={{ scale: 1.02, y: -5 }}
