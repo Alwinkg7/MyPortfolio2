@@ -1,11 +1,17 @@
-
 export const projects = [
   {
     id: 1,
     title: "FinBridge (AI-Powered Financial Management)",
     description:
       "Developed an AI-powered financial management app using the MERN stack, integrating AI-based financial advice to improve user efficiency by 30%.",
-    technologies: ["React", "Node.js", "Django", "Express.js", "MongoDB", "Sklearn"],
+    technologies: [
+      "React",
+      "Node.js",
+      "Django",
+      "Express.js",
+      "MongoDB",
+      "Sklearn",
+    ],
     githubLink: "https://github.com/Alwinkg7/Personal-Finance-Manager.git",
     liveLink: "https://finbridge-beta.vercel.app/guesthome",
   },
@@ -43,7 +49,7 @@ export const projects = [
   },
   {
     id: 6,
-    title: "Kayaking Business Website (Development)",
+    title: "Kayaking Business Website",
     description:
       "Adventure tourism website developed for a kayaking business, showcasing services and booking capabilities.",
     technologies: ["ASP.NET Core Web API", "Next.js", "SQL Server"],
@@ -78,9 +84,14 @@ export const projects = [
     title: "Personal Portfolio Website",
     description:
       "Modern portfolio website showcasing my projects, skills, and experience. Built with React, Tailwind CSS, and Framer Motion animations.",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Lightswind UI"],
+    technologies: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Lightswind UI",
+    ],
     githubLink: "https://github.com/Alwinkg7/portfolio",
-    liveLink: "https://alwinkgportfolio.vercel.app/",
+    liveLink: "https://alwinkg.vercel.app/",
   },
 ];
-

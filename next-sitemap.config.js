@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://alwinkgportfolio.vercel.app',
+  siteUrl: process.env.SITE_URL || 'https://alwinkg.vercel.app',
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   robotsTxtOptions: {
@@ -11,7 +11,7 @@ module.exports = {
       },
     ],
     additionalSitemaps: [
-      'https://alwinkgportfolio.vercel.app/sitemap.xml',
+      'https://alwinkg.vercel.app/sitemap.xml',
     ],
   },
   exclude: ['/server-sitemap.xml'],

@@ -27,10 +27,7 @@ export default function Document() {
         />
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content="https://alwinkgportfolio.vercel.app/"
-        />
+        <meta property="og:url" content="https://alwinkg.vercel.app/" />
         <meta
           property="og:title"
           content="Alwin K G - Full Stack Developer Portfolio"
@@ -41,7 +38,7 @@ export default function Document() {
         />
         <meta
           property="og:image"
-          content="https://alwinkgportfolio.vercel.app/portfolio1.jpg"
+          content="https://alwinkg.vercel.app/portfolio1.jpg"
         />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -50,10 +47,7 @@ export default function Document() {
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta
-          property="twitter:url"
-          content="https://alwinkgportfolio.vercel.app/"
-        />
+        <meta property="twitter:url" content="https://alwinkg.vercel.app/" />
         <meta
           property="twitter:title"
           content="Alwin K G - Full Stack Developer Portfolio"
@@ -64,7 +58,7 @@ export default function Document() {
         />
         <meta
           property="twitter:image"
-          content="https://alwinkgportfolio.vercel.app/portfolio1.jpg"
+          content="https://alwinkg.vercel.app/portfolio1.jpg"
         />
         <meta property="twitter:creator" content="@alwinkg" />
 
@@ -74,14 +68,14 @@ export default function Document() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         {/* Favicon and Icons */}
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/logo192.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico" />
+        <link rel="icon" href="https://alwinkg.vercel.app/portfolio1.jpg" />
+        <link rel="apple-touch-icon" sizes="180x180" href="https://alwinkg.vercel.app/portfolio1.jpg" />
+        <link rel="icon" type="image/png" sizes="32x32" href="https://alwinkg.vercel.app/portfolio1.jpg" />
+        <link rel="icon" type="image/png" sizes="16x16" href="https://alwinkg.vercel.app/portfolio1.jpg" />
         <link rel="manifest" href="/manifest.json" />
 
         {/* Canonical URL */}
-        <link rel="canonical" href="https://alwinkgportfolio.vercel.app/" />
+        <link rel="canonical" href="https://alwinkg.vercel.app/" />
 
         {/* Google Site Verification */}
         <meta
@@ -100,8 +94,8 @@ export default function Document() {
               jobTitle: "Full Stack Developer",
               description:
                 "Experienced Full Stack Developer specializing in React, Node.js, TypeScript, and modern web technologies",
-              url: "https://alwinkgportfolio.vercel.app",
-              image: "https://alwinkgportfolio.vercel.app/portfolio1.jpg",
+              url: "https://alwinkg.vercel.app",
+              image: "https://alwinkg.vercel.app/portfolio1.jpg",
               sameAs: [
                 "https://github.com/alwinkg",
                 "https://www.linkedin.com/in/alwin-k-g/",
