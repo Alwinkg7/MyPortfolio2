@@ -1,215 +1,200 @@
-import { motion } from "framer-motion";
-import { TypeAnimation } from "react-type-animation";
-import Image from "next/image";
+import React, { useState, useEffect, useRef, Suspense } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { Float, MeshDistortMaterial, Sphere, PerspectiveCamera } from "@react-three/drei";
+import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
+import { TextureLoader } from "three";
+
+// Interactive 3D Sphere for the Hero Right Side
+const InteractiveSphere = () => {
+  const texture = useLoader(TextureLoader, "/portfolio1.jpg");
+  const meshRef = useRef<any>(null);
+
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x = state.mouse.y * 0.2;
+      meshRef.current.rotation.y = state.mouse.x * 0.2;
+    }
+  });
+
+  return (
+    <Float speed={4} rotationIntensity={1} floatIntensity={2}>
+      <Sphere ref={meshRef} args={[1, 100, 100]} scale={2.4}>
+        <MeshDistortMaterial
+          map={texture}
+          color="#38BDF8"
+          attach="material"
+          distort={0.4}
+          speed={2}
+          roughness={0.2}
+          metalness={0.8}
+        />
+      </Sphere>
+    </Float>
+  );
+};
+
+// Text Scramble Effect Component
+const ScrambleText = ({ text }: { text: string }) => {
+  const [displayText, setDisplayText] = useState("");
+  const chars = "!<>-_\\/[]{}—=+*^?#________";
+
+  useEffect(() => {
+    let frame = 0;
+    const interval = setInterval(() => {
+      setDisplayText(
+        text
+          .split("")
+          .map((char, i) => {
+            if (char === " ") return " ";
+            if (i < frame / 3) return char;
+            return chars[Math.floor(Math.random() * chars.length)];
+          })
+          .join("")
+      );
+      frame++;
+      if (frame > text.length * 3) clearInterval(interval);
+    }, 30);
+    return () => clearInterval(interval);
+  }, [text]);
+
+  return <span>{displayText}</span>;
+};
 
 const Hero = () => {
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 0.2], [0, -100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
-    <section className="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center gap-12 px-6 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white relative overflow-hidden pt-20 lg:pt-0">
-      {/* Background Effects */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="w-full h-full bg-gradient-to-r from-blue-500/10 to-purple-500/10"></div>
-      </div>
+    <section id="hero" className="slide-section overflow-hidden bg-glow-radial">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 w-full grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 items-center h-full">
 
-      {/* Floating Elements */}
-      <motion.div
-        animate={{
-          y: [0, -20, 0],
-          rotate: [0, 5, 0],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full opacity-20 blur-xl"
-      />
-      <motion.div
-        animate={{
-          y: [0, 20, 0],
-          rotate: [0, -5, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute bottom-20 right-10 w-32 h-32 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full opacity-20 blur-xl"
-      />
-
-      {/* Text Content */}
-      <div className="lg:flex-1 max-w-2xl lg:pl-12 text-center lg:text-left relative z-10">
+        {/* Left Content (60%) */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="space-y-6"
+          style={{ y, opacity }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="space-y-8 z-10"
         >
-          <motion.p
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-lg text-cyan-400 font-medium tracking-wide"
-          >
-            Hi, my name is
-          </motion.p>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-white via-cyan-200 to-purple-300 bg-clip-text text-transparent leading-tight"
-          >
-            Alwin K G.
-          </motion.h1>
-
-          <div className="h-16 flex items-center justify-center lg:justify-start">
-            <TypeAnimation
-              sequence={[
-                "I build AI-powered web solutions",
-                2000,
-                "I develop fintech applications",
-                2000,
-                "I create full-stack applications",
-                2000,
-                "I integrate machine learning",
-                2000,
-              ]}
-              wrapper="h2"
-              cursor
-              repeat={Infinity}
-              className="text-xl sm:text-2xl lg:text-3xl text-cyan-300 font-medium"
-            />
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-brand-cyan/30 bg-brand-cyan/5 text-brand-cyan text-xs font-mono uppercase tracking-widest">
+            <span className="w-2 h-2 rounded-full bg-brand-cyan animate-pulse" />
+            <span>✦ Available for Opportunities</span>
           </div>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.0 }}
-            className="text-lg text-gray-300 leading-relaxed max-w-xl mx-auto lg:mx-0"
-          >
-            MCA graduate with hands-on experience in{" "}
-            <span className="text-cyan-400 font-semibold">
-              Full-Stack Development, AI/ML, and Fintech solutions
-            </span>
-            . I specialize in building scalable, dynamic, and AI-powered web
-            applications that solve real-world problems.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4"
-          >
-            <motion.a
-              href="#projects"
-              className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 overflow-hidden"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                View My Work
-                <motion.span
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  →
-                </motion.span>
+          <div className="space-y-4">
+            <h2 className="text-xl md:text-2xl text-brand-slate font-grotesk font-medium">
+              Hi, I'm
+            </h2>
+            <h1 className="text-6xl md:text-8xl font-grotesk font-extrabold text-brand-offwhite leading-none">
+              <span className="text-brand-cyan text-glow-cyan">
+                <ScrambleText text="Alwin K G" />
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </motion.a>
+            </h1>
+            <p className="text-brand-slate text-lg md:text-xl font-medium flex items-center flex-wrap gap-2">
+              Full Stack Developer
+              <span className="text-brand-cyan font-bold mx-1">·</span> React
+              <span className="text-brand-cyan font-bold mx-1">·</span> .NET
+              <span className="text-brand-cyan font-bold mx-1">·</span> Python
+            </p>
+          </div>
 
-            <motion.a
-              href="https://drive.google.com/file/d/1cEh8Pj0RMOvkFdEt3JgteHWXM_K53GSo/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-300 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="flex items-center gap-2">
-                Download Resume
-                <motion.span
-                  animate={{ y: [0, -2, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  ↓
-                </motion.span>
-              </span>
-            </motion.a>
-          </motion.div>
+          <p className="text-brand-slate text-lg leading-relaxed max-w-xl">
+            MCA graduate building production-grade web apps —
+            from AI-powered fintech platforms to scalable e-commerce systems.
+          </p>
 
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.4 }}
-            className="flex flex-wrap justify-center lg:justify-start gap-6 pt-8 text-sm"
-          >
+          <div className="flex flex-wrap gap-4 pt-4">
+            <a href="#projects" className="btn-primary group">
+              View My Work
+              <span className="ml-2 group-hover:translate-x-1 transition-transform inline-block">→</span>
+            </a>
             <a
-              href="https://www.linkedin.com/in/alwin-k-g/"
+              href="https://drive.google.com/file/d/1Kv8kODWcBlOgKPSxNdncifvR-6aGA2-O/view?usp=drive_link"
               target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors"
+              rel="noreferrer"
+              className="btn-ghost"
             >
-              <span>LinkedIn</span>
+              Download Resume ↓
             </a>
-            <a
-              href="https://github.com/Alwinkg7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors"
-            >
-              <span>GitHub</span>
+          </div>
+
+          <div className="flex items-center space-x-6 pt-6 text-brand-slate">
+            <a href="https://github.com/Alwinkg7" target="_blank" rel="noreferrer" className="hover:text-brand-cyan transition-colors">
+              <Github size={24} />
             </a>
-            <a
-              href="mailto:alwinkgofficial@gmail.com"
-              className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors"
-            >
-              <span>Email</span>
+            <a href="https://linkedin.com/in/alwin-k-g" target="_blank" rel="noreferrer" className="hover:text-brand-cyan transition-colors">
+              <Linkedin size={24} />
             </a>
-            <span className="text-gray-400">+91 9633529303</span>
-          </motion.div>
+            <a href="mailto:alwinkgofficial@gmail.com" className="hover:text-brand-cyan transition-colors">
+              <Mail size={24} />
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Right Content (40%) - 3D Visual */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="relative aspect-square w-full max-w-[500px] mx-auto lg:mx-0"
+        >
+          {/* 3D Canvas - Only rendered on client to prevent SSR mismatch/reloads */}
+          <div className="absolute inset-0 z-0">
+            {mounted && (
+              <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 0, 5], fov: 45 }}>
+                <PerspectiveCamera makeDefault position={[0, 0, 5]} />
+                <ambientLight intensity={0.5} />
+                <pointLight position={[10, 10, 10]} intensity={1} />
+                <Suspense fallback={null}>
+                  <InteractiveSphere />
+                </Suspense>
+              </Canvas>
+            )}
+          </div>
+
+          {/* Frame/Badge Overlay */}
+          <div className="relative z-10 w-full h-full p-8 flex items-center justify-center">
+            <div className="w-full h-full border-2 border-brand-cyan/20 rounded-3xl relative backdrop-blur-[2px]">
+              {/* Dot Matrix BG pattern inside frame */}
+              <div
+                className="absolute inset-0 opacity-10"
+                style={{
+                  backgroundImage: "radial-gradient(#38BDF8 1px, transparent 0)",
+                  backgroundSize: "24px 24px"
+                }}
+              />
+              <div className="absolute inset-0 opacity-10"
+                style={{
+                  backgroundImage: "radial-gradient(#38BDF8 1px, transparent 0)",
+                  backgroundSize: "24px 24px"
+                }}
+              />
+              <img src="/portfolio1.jpg" alt="" className="w-full h-full object-cover rounded-3xl opacity-50 transition-opacity hover:opacity-100" />
+              
+              {/* Floating Exp Badge - Moved here to ensure it's on top of the image */}
+              <div className="absolute -top-4 -right-4 z-20 bg-brand-surface border border-brand-cyan/50 px-4 py-2 rounded-full text-brand-cyan font-bold shadow-[0_0_15px_rgba(56,189,248,0.3)]">
+                <ScrambleText text="1 Yr Exp" />
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
 
-      {/* Profile Image */}
+      {/* Scroll Cue */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
-        animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-        transition={{ delay: 0.8, duration: 1.0 }}
-        className="lg:flex-1 flex justify-center relative z-10 mb-8 lg:mb-0"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-brand-cyan opacity-50 flex flex-col items-center"
       >
-        <div className="relative">
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 p-1"
-          >
-            <div className="w-full h-full bg-slate-900 rounded-full"></div>
-          </motion.div>
-
-          <Image
-            src="/portfolio1.jpg"
-            alt="Alwin K G"
-            width={384}
-            height={384}
-            className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full object-cover shadow-2xl border-4 border-white/20 backdrop-blur-sm"
-          />
-
-          <motion.div
-            animate={{
-              scale: [1, 1.1, 1],
-              opacity: [0.5, 0.8, 0.5],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/20 to-purple-600/20 blur-xl"
-          />
-        </div>
+        <span className="text-[10px] uppercase tracking-widest mb-2 font-mono">Scroll</span>
+        <ArrowDown size={20} />
       </motion.div>
     </section>
   );

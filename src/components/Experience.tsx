@@ -1,208 +1,118 @@
+import React from "react";
 import { motion } from "framer-motion";
+import { Briefcase, Calendar, MapPin, ArrowRight } from "lucide-react";
 
-// Sorted from most recent to oldest
 const experiences = [
   {
-    id: 3,
     company: "Voleergo Solutions LLP",
-    location: "On-site | Kochi, Kerala, India",
     role: "Software Developer",
+    location: "On-site · Kochi",
     date: "Jun 2025 – Present",
-    achievements: [
-      "Working on both frontend and backend development, along with database management",
-      "Building dynamic, production-ready applications using ASP.NET Core Web API, Next.js, and SQL Server (SSMS)",
-      "Collaborated with the development team on projects including Voleergo Academy and E-commerce platforms",
-      "Mentored and guided interns/students in full-stack development, code quality, and best practices",
-      "Enhanced system reliability, performance, and maintainability through modern development practices",
+    bullets: [
+      "Designed and developed scalable backend systems using ASP.NET Core Web API for real-world applications.",
+      "Built authentication, payment integration, and automation workflows used in production environments.",
+      "Implemented optimized SQL Server stored procedures for business logic and high-performance data handling.",
+      "Mentored interns on API development and clean coding practices.",
     ],
-    projects: [
-      {
-        name: "Voleergo Academy",
-        link: "https://voleergoacademy.com/",
-        description: "Educational platform",
-      },
-      {
-        name: "E-commerce Website",
-        link: "https://ecommerceqa.voleergo.com/website/home",
-        description: "Online shopping platform (Development)",
-      },
-      {
-        name: "Kayaking Business Website",
-        link: "https://walkingtrees.in/",
-        description: "Adventure tourism platform",
-      },
-    ],
+    tags: ["Voleergo Academy", "E-commerce", "Kayaking Site"],
   },
   {
-    id: 2,
-    company: "Calanjiyum Consultancies And Technology",
-    location: "Remote",
+    company: "Calanjiyum Consultancies",
     role: "Web Development Intern",
-    date: "May 2025 – Aug 2025",
-    achievements: [
-      "Developed a feedback system called Formly using PHP, React.JS, and MySQL",
-      "Built a module to display result analytics, handling frontend, backend, and database implementation",
-      "Collaborated in a team of 4 to deliver project milestones",
-      "Enhanced system functionality and user experience",
+    location: "Remote",
+    date: "May – Aug 2025",
+    bullets: [
+      "Contributed to Formly, a feedback analytics application using PHP, React, and MySQL.",
+      "Worked in an agile setup delivering features within short timelines.",
     ],
-    projects: [
-      {
-        name: "Formly",
-        link: "https://formly1.vercel.app/",
-        description: "Feedback system with analytics",
-      },
-    ],
+    tags: ["Formly"],
   },
   {
-    id: 1,
-    company: "EY GDS (Ernst & Young – Global Delivery Services)",
-    location: "with Edunet Foundation and AICTE",
-    role: "Full Stack Web Development Intern",
-    date: "Feb 2025 – Mar 2025",
-    achievements: [
-      "Gained expertise in AI tools, UI/UX design principles, and full-stack web development using the MERN stack (MongoDB, Express.js, React, Node.js)",
-      "Recognized for developing one of the top 40 best projects, earning a certificate of excellence",
-      "Built and presented project prototypes to EY experts, refining solutions based on feedback",
-      "Applied industry best practices in full-stack development",
+    company: "EY GDS with Edunet Foundation",
+    role: "Full Stack Intern",
+    location: "Remote",
+    date: "Feb – Mar 2025",
+    bullets: [
+      "Developed a MERN-based financial application selected among Top 40 projects.",
+      "Improved UI and usability through iterative feedback.",
     ],
-    projects: [
-      {
-        name: "FinBridge",
-        link: "https://finbridge-beta.vercel.app/guesthome/",
-        description: "AI-powered financial management application",
-      },
-    ],
+    highlight: "🏆 Top 40 / 1500+ Submissions",
+    tags: ["FinBridge"],
   },
 ];
 
 const Experience = () => {
   return (
-    <section
-      id="experience"
-      className="min-h-screen px-6 py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 text-gray-800 relative overflow-hidden"
-    >
-      {/* Background Effects */}
-      <div className="absolute inset-0 opacity-40">
-        <div className="w-full h-full bg-gradient-to-r from-blue-500/10 to-purple-500/10"></div>
-      </div>
+    <section id="experience" className="slide-section bg-brand-navy">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 w-full flex flex-col justify-center min-h-screen py-20">
+        
+        <div className="space-y-4 mb-16">
+          <span className="text-brand-cyan font-mono text-sm tracking-widest uppercase">04. Experience</span>
+          <h2 className="text-4xl md:text-5xl font-grotesk font-bold text-brand-offwhite">
+            Where I've Worked
+          </h2>
+        </div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent text-center mb-16"
-        >
-          Professional Experience
-        </motion.h2>
-
-        <div className="space-y-12 relative">
-          {/* Timeline Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 hidden lg:block"></div>
-
-          {experiences.map((exp, index) => (
+        <div className="relative border-l-2 border-brand-border/30 ml-4 md:ml-8 space-y-12">
+          {experiences.map((exp, i) => (
             <motion.div
-              key={exp.id}
-              initial={{ opacity: 0, x: -50 }}
+              key={i}
+              initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="relative"
+              transition={{ delay: i * 0.2 }}
+              className="relative pl-8 md:pl-12"
             >
               {/* Timeline Dot */}
-              <div className="absolute left-6 top-8 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full border-4 border-white shadow-lg hidden lg:block z-10" />
-
-              <div className="lg:ml-20">
-                <motion.div
-                  whileHover={{ scale: 1.02, y: -5 }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/20"
-                >
-                  {/* Header */}
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
-                    <div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                        {exp.company}
-                      </h3>
-                      <p className="text-lg text-blue-600 font-semibold mb-1">
-                        {exp.role}
-                      </p>
-                      <p className="text-sm text-gray-500 mb-2">
-                        {exp.location}
-                      </p>
-                      <span className="inline-block bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-                        {exp.date}
-                      </span>
-                    </div>
+              <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-navy border-2 border-brand-cyan shadow-[0_0_10px_rgba(56,189,248,0.5)]" />
+              
+              <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8">
+                {/* Meta info */}
+                <div className="space-y-4">
+                  <div className="inline-block px-3 py-1 rounded-full border border-brand-cyan/30 bg-brand-cyan/5 text-brand-cyan text-xs font-bold uppercase tracking-wider">
+                    {exp.date}
+                  </div>
+                  <div className="space-y-1">
+                    <h3 className="text-2xl font-bold font-grotesk text-brand-offwhite">{exp.role}</h3>
+                    <p className="text-brand-cyan font-medium flex items-center">
+                      <Briefcase size={16} className="mr-2" />
+                      {exp.company}
+                    </p>
+                    <p className="text-brand-slate text-sm flex items-center">
+                      <MapPin size={14} className="mr-2" />
+                      {exp.location}
+                    </p>
                   </div>
 
-                  {/* Achievements */}
-                  <div className="mb-6">
-                    <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                      Key Achievements
-                    </h4>
-                    <ul className="space-y-3">
-                      {exp.achievements.map((item, i) => (
-                        <motion.li
-                          key={i}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.4, delay: i * 0.1 }}
-                          className="flex items-start space-x-3 text-gray-700"
-                        >
-                          <span className="flex-shrink-0 w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full mt-2"></span>
-                          <span>{item}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Projects */}
-                  {exp.projects && exp.projects.length > 0 && (
-                    <div>
-                      <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                        <span className="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
-                        Notable Projects
-                      </h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {exp.projects.map((project, i) => (
-                          <motion.a
-                            key={i}
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.4, delay: i * 0.1 }}
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            className="group bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-xl border border-blue-200 hover:border-blue-300 transition-all duration-300"
-                          >
-                            <h5 className="font-semibold text-blue-800 group-hover:text-blue-900 transition-colors">
-                              {project.name}
-                            </h5>
-                            <p className="text-sm text-gray-600 mt-1">
-                              {project.description}
-                            </p>
-                            <div className="flex items-center mt-2 text-blue-600 text-sm">
-                              <span>View Project</span>
-                              <motion.span
-                                animate={{ x: [0, 5, 0] }}
-                                transition={{ duration: 1.5, repeat: Infinity }}
-                                className="ml-2"
-                              >
-                                →
-                              </motion.span>
-                            </div>
-                          </motion.a>
-                        ))}
-                      </div>
+                  {exp.highlight && (
+                    <div className="p-3 rounded-lg bg-brand-cyan/10 border border-brand-cyan/20 text-brand-cyan text-sm font-bold">
+                      {exp.highlight}
                     </div>
                   )}
-                </motion.div>
+                </div>
+
+                {/* Content */}
+                <div className="glass-card p-6 md:p-8 space-y-6">
+                  <ul className="space-y-4">
+                    {exp.bullets.map((bullet, idx) => (
+                      <li key={idx} className="flex items-start text-brand-slate leading-relaxed">
+                        <ArrowRight size={16} className="text-brand-cyan mr-3 mt-1 flex-shrink-0" />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {exp.tags.map((tag) => (
+                      <span 
+                        key={tag} 
+                        className="px-2 py-1 bg-brand-navy border border-brand-border/50 text-brand-slate text-[10px] font-mono rounded hover:border-brand-cyan/30 hover:text-brand-cyan transition-colors"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}

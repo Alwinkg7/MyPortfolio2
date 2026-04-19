@@ -1,16 +1,32 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { motion, AnimatePresence } from "framer-motion";
+import { Github, Linkedin, Menu, X } from "lucide-react";
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+
+      const sections = ["about", "skills", "experience", "projects", "contact"];
+      const current = sections.find(section => {
+        const el = document.getElementById(section);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          return rect.top >= 0 && rect.top <= window.innerHeight / 2;
+        }
+        return false;
+      });
+      if (current) setActiveSection(current);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -19,9 +35,8 @@ const Header: React.FC = () => {
 
   const navItems = [
     { name: "about", label: "About" },
-    { name: "qualifications", label: "Education" },
+    { name: "skills", label: "Skills" },
     { name: "experience", label: "Experience" },
-    { name: "techstack", label: "Skills" },
     { name: "projects", label: "Projects" },
     { name: "contact", label: "Contact" },
   ];
@@ -30,128 +45,101 @@ const Header: React.FC = () => {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/90 backdrop-blur-md shadow-lg border-b border-white/20"
-          : "bg-transparent"
-      } px-6 py-4 flex items-center justify-between md:px-10`}
+      className={cn(
+        "fixed top-0 left-0 w-full z-[100] transition-all duration-300 px-6 py-4 md:px-10",
+        scrolled ? "glass-nav py-3" : "bg-transparent"
+      )}
     >
-      <a href="/">
-      <motion.div
-        className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
-        whileHover={{ scale: 1.05 }}
-        
-      >
-        Alwin K G
-      </motion.div>
-      </a>
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        {/* Logo */}
+        <a href="#hero" className="flex items-center space-x-2 group">
+          <div className="w-20 h-10 border-2 border-brand-cyan rounded-lg flex items-center justify-center font-grotesk font-bold text-brand-cyan relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(56,189,248,0.5)]">
+            <span className="z-10">Alwin K G</span>
+            <motion.div
+              className="absolute inset-0 bg-brand-cyan/10"
+              initial={{ x: "-100%" }}
+              whileHover={{ x: "0%" }}
+              transition={{ type: "spring", stiffness: 100 }}
+            />
+          </div>
+        </a>
 
-      {/* Desktop Nav */}
-      <nav className="hidden lg:block">
-        <ul className="flex space-x-8 text-gray-700 font-medium text-sm">
-          {navItems.map((item, index) => (
-            <motion.li
+        {/* Desktop Nav */}
+        <nav className="hidden lg:flex items-center space-x-1">
+          {navItems.map((item) => (
+            <a
               key={item.name}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="relative group"
+              href={`#${item.name}`}
+              className={cn(
+                "px-4 py-2 text-sm font-medium transition-colors relative group",
+                activeSection === item.name ? "text-brand-cyan" : "text-brand-slate hover:text-brand-offwhite"
+              )}
             >
-              <a
-                href={`#${item.name}`}
-                className="relative px-3 py-2 hover:text-blue-600 transition-colors duration-300"
-              >
-                {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full transition-all duration-300"></span>
-              </a>
-            </motion.li>
+              {item.label}
+              {activeSection === item.name && (
+                <motion.div
+                  layoutId="nav-underline"
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-brand-cyan rounded-full"
+                />
+              )}
+            </a>
           ))}
-        </ul>
-      </nav>
+        </nav>
 
-      {/* Social Icons */}
-      <div className="hidden lg:flex space-x-4">
-        <motion.a
-          href="https://github.com/Alwinkg7"
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ scale: 1.2, rotate: 5 }}
-          whileTap={{ scale: 0.9 }}
-          className="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:text-gray-900 transition-all duration-300"
-        >
-          <FontAwesomeIcon icon={faGithub} className="w-5 h-5" />
-        </motion.a>
-        <motion.a
-          href="https://www.linkedin.com/in/alwin-k-g/"
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ scale: 1.2, rotate: -5 }}
-          whileTap={{ scale: 0.9 }}
-          className="w-10 h-10 bg-gray-100 hover:bg-blue-100 rounded-full flex items-center justify-center text-gray-600 hover:text-blue-600 transition-all duration-300"
-        >
-          <FontAwesomeIcon icon={faLinkedin} className="w-5 h-5" />
-        </motion.a>
+        {/* Right Actions */}
+        <div className="flex items-center space-x-4">
+          <div className="hidden sm:flex items-center space-x-2 px-3 py-1.5 rounded-full border border-brand-success/30 bg-brand-success/10 text-brand-success text-[10px] font-bold tracking-wider uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-success animate-pulse" />
+            <span>Open to Work</span>
+          </div>
+
+          <div className="hidden md:flex items-center space-x-3 ml-2 border-l border-brand-border/30 pl-4">
+            <a href="https://github.com/Alwinkg7" target="_blank" rel="noreferrer" className="text-brand-slate hover:text-brand-cyan transition-colors">
+              <Github size={20} />
+            </a>
+            <a href="https://linkedin.com/in/alwin-k-g" target="_blank" rel="noreferrer" className="text-brand-slate hover:text-brand-cyan transition-colors">
+              <Linkedin size={20} />
+            </a>
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="lg:hidden text-brand-offwhite"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
-
-      {/* Hamburger Icon (Mobile) */}
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        className="lg:hidden w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-700 transition-all duration-300"
-        onClick={() => setMenuOpen(!menuOpen)}
-        aria-label="Toggle menu"
-      >
-        <FontAwesomeIcon
-          icon={menuOpen ? faXmark : faBars}
-          className="w-5 h-5"
-        />
-      </motion.button>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-xl border-b border-white/20 mt-2 py-6 px-6 flex flex-col space-y-4 lg:hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden overflow-hidden bg-brand-navy/95 backdrop-blur-xl border-b border-brand-border/20"
           >
-            {navItems.map((item, index) => (
-              <motion.a
-                key={item.name}
-                href={`#${item.name}`}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                className="text-gray-700 font-medium hover:text-blue-600 transition-colors py-2 border-b border-gray-100 last:border-b-0"
-                onClick={() => setMenuOpen(false)}
-              >
-                {item.label}
-              </motion.a>
-            ))}
-            <div className="flex space-x-4 pt-4 border-t border-gray-200">
-              <motion.a
-                href="https://github.com/Alwinkg7"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:text-gray-900 transition-all duration-300"
-              >
-                <FontAwesomeIcon icon={faGithub} className="w-5 h-5" />
-              </motion.a>
-              <motion.a
-                href="https://www.linkedin.com/in/alwin-k-g/"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-10 h-10 bg-gray-100 hover:bg-blue-100 rounded-full flex items-center justify-center text-gray-600 hover:text-blue-600 transition-all duration-300"
-              >
-                <FontAwesomeIcon icon={faLinkedin} className="w-5 h-5" />
-              </motion.a>
+            <div className="px-6 py-8 flex flex-col space-y-6">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={`#${item.name}`}
+                  className="text-2xl font-grotesk font-bold text-brand-offwhite hover:text-brand-cyan transition-colors"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
+              <div className="pt-6 border-t border-brand-border/20 flex space-x-6">
+                <a href="https://github.com/Alwinkg7" className="text-brand-slate hover:text-brand-cyan">
+                  <Github size={24} />
+                </a>
+                <a href="https://linkedin.com/in/alwin-k-g" className="text-brand-slate hover:text-brand-cyan">
+                  <Linkedin size={24} />
+                </a>
+              </div>
             </div>
           </motion.div>
         )}

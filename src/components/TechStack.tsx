@@ -1,155 +1,145 @@
-import {
-  faReact,
-  faPython,
-  faNodeJs,
-  faHtml5,
-  faCss3Alt,
-  faGitAlt,
-} from "@fortawesome/free-brands-svg-icons";
-import { faDatabase, faCode, faServer, faRobot } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
 import { motion } from "framer-motion";
+import {
+  SiJavascript, SiPython,
+  SiDotnet, SiDjango, SiNodedotjs, SiExpress,
+  SiReact, SiNextdotjs, SiTypescript, SiHtml5, SiCss3,
+  SiMysql, SiMongodb, SiTailwindcss, SiChakraui, SiMui, SiBootstrap,
+  SiGit, SiPostman, SiVercel, SiRender, SiPostgresql
+} from "react-icons/si";
+import { IoServer } from "react-icons/io5";
+import { FaMicrosoft } from "react-icons/fa";
 
-const techStack = [
-  { name: "Python", icon: faPython, category: "Programming Languages" },
-  { name: "C#", icon: faPython, category: "Programming Languages" },
-  { name: "JavaScript", icon: faCode, category: "Programming Languages" },
-  { name: "React", icon: faReact, category: "Web Development" },
-  { name: "Next.js", icon: faReact, category: "Web Development" },
-  { name: "Node.js", icon: faNodeJs, category: "Web Development" },
-  { name: "Express.js", icon: faServer, category: "Web Development" },
-  { name: "Django", icon: faServer, category: "Web Development" },
-  { name: "ASP.NET Core", icon: faCode, category: "Web Development" },
-  { name: "HTML", icon: faHtml5, category: "Web Development" },
-  { name: "CSS", icon: faCss3Alt, category: "Web Development" },
-  { name: "MySQL", icon: faDatabase, category: "Database" },
-  { name: "MongoDB", icon: faDatabase, category: "Database" },
-  { name: "SQL Server", icon: faDatabase, category: "Database" },
-  { name: "Tailwind CSS", icon: faCss3Alt, category: "UI Frameworks" },
-  { name: "Chakra UI", icon: faCss3Alt, category: "UI Frameworks" },
-  { name: "Material UI", icon: faCss3Alt, category: "UI Frameworks" },
-  { name: "Lightswind UI", icon: faCss3Alt, category: "UI Frameworks" },
-  { name: "Bootstrap", icon: faCss3Alt, category: "UI Frameworks" },
-  { name: "Shopify", icon: faCss3Alt, category: "UI Frameworks" },
-  { name: "Git", icon: faGitAlt, category: "Tools" },
-  { name: "Postman", icon: faCode, category: "Tools" },
-  { name: "VS Code", icon: faCode, category: "Tools" },
-  { name: "Cursor AI", icon: faRobot, category: "Tools" },
-  { name: "Visual Studio", icon: faRobot, category: "Tools" },
-];
+interface Skill {
+  name: string;
+  icon: any;
+}
+
+interface Category {
+  title: string;
+  skills: Skill[];
+}
 
 const TechStack = () => {
-  const categories = Array.from(new Set(techStack.map(tech => tech.category)));
-  
-  return (
-    <section id="techstack" className="px-6 py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="w-full h-full bg-gradient-to-r from-blue-500/10 to-purple-500/10"></div>
-      </div>
-      
-      <div className="max-w-7xl mx-auto relative z-10">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent"
-        >
-          Tech Stack
-        </motion.h2>
+  const categories: Category[] = [
+    {
+      title: "Languages",
+      skills: [
+        { name: "C#", icon: SiDotnet },
+        { name: "JavaScript", icon: SiJavascript },
+        { name: "Python", icon: SiPython },
+      ],
+    },
+    {
+      title: "Backend",
+      skills: [
+        { name: ".NET Core", icon: SiDotnet },
+        { name: "Django", icon: SiDjango },
+        { name: "Node.js", icon: SiNodedotjs },
+        { name: "Express.js", icon: SiExpress },
+      ],
+    },
+    {
+      title: "Frontend",
+      skills: [
+        { name: "React", icon: SiReact },
+        { name: "Next.js", icon: SiNextdotjs },
+        { name: "TypeScript", icon: SiTypescript },
+        { name: "JavaScript", icon: SiJavascript },
+        { name: "HTML5", icon: SiHtml5 },
+        { name: "CSS3", icon: SiCss3 },
+      ],
+    },
+    {
+      title: "Database",
+      skills: [
+        { name: "SQL Server", icon: IoServer },
+        { name: "MySQL", icon: SiMysql },
+        { name: "MongoDB", icon: SiMongodb },
+        { name: "PL/SQL", icon: IoServer },
+        { name: "PostgreSQL", icon: SiPostgresql },
+      ],
+    },
+    {
+      title: "UI Frameworks",
+      skills: [
+        { name: "Tailwind CSS", icon: SiTailwindcss },
+        { name: "Chakra UI", icon: SiChakraui },
+        { name: "Material UI", icon: SiMui },
+        { name: "Bootstrap", icon: SiBootstrap },
+      ],
+    },
+    {
+      title: "Tools",
+      skills: [
+        { name: "Git", icon: SiGit },
+        { name: "Postman", icon: SiPostman },
+        { name: "Vercel", icon: SiVercel },
+        { name: "Render", icon: SiRender },
+        { name: "IIS", icon: FaMicrosoft },
+      ],
+    },
+  ];
 
-        <div className="space-y-12">
-          {categories.map((category, categoryIndex) => (
+  const stats = [
+    { value: "3+ Languages", label: "Foundation" },
+    { value: "8+ Web Tech", label: "Stack" },
+    { value: "6+ Frameworks", label: "UI Tools" },
+  ];
+
+  return (
+    <section id="skills" className="slide-section bg-brand-navy">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 w-full flex flex-col justify-center min-h-screen py-20">
+
+        <div className="space-y-4 mb-12">
+          <span className="text-brand-cyan font-mono text-sm tracking-widest uppercase">03. Tech Stack</span>
+          <h2 className="text-4xl md:text-5xl font-grotesk font-bold text-brand-offwhite">
+            Tools I Build With
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-10">
+          {categories.map((cat, i) => (
             <motion.div
-              key={category}
-              initial={{ opacity: 0, y: 30 }}
+              key={cat.title}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
+              transition={{ delay: i * 0.1 }}
               className="space-y-6"
             >
-              <h3 className="text-2xl font-bold text-center text-cyan-300 mb-8">
-                {category}
+              <h3 className="text-brand-slate text-sm font-mono uppercase tracking-widest flex items-center">
+                {cat.title}
+                <div className="h-px bg-brand-border/30 flex-1 ml-4" />
               </h3>
-              
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                {techStack
-                  .filter(tech => tech.category === category)
-                  .map((tech, techIndex) => (
-                    <motion.div
-                      key={tech.name}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ 
-                        duration: 0.4, 
-                        delay: (categoryIndex * 0.1) + (techIndex * 0.05) 
-                      }}
-                      whileHover={{ 
-                        scale: 1.1, 
-                        y: -5,
-                        rotateY: 5
-                      }}
-                      className="group relative"
-                    >
-                      <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 rounded-xl hover:bg-white/20 transition-all duration-300 cursor-pointer">
-                        <div className="flex flex-col items-center space-y-3">
-                          <motion.div
-                            whileHover={{ rotate: 360 }}
-                            transition={{ duration: 0.6 }}
-                            className="text-2xl text-cyan-400 group-hover:text-cyan-300 transition-colors"
-                          >
-                            <FontAwesomeIcon icon={tech.icon} />
-                          </motion.div>
-                          <span className="text-sm font-medium text-center text-gray-200 group-hover:text-white transition-colors">
-                            {tech.name}
-                          </span>
-                        </div>
-                        
-                        {/* Hover Effect */}
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          whileHover={{ opacity: 1 }}
-                          className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-xl"
-                        />
-                      </div>
-                    </motion.div>
-                  ))}
+
+              <div className="flex flex-wrap gap-3">
+                {cat.skills.map((skill) => (
+                  <div
+                    key={skill.name}
+                    className="flex items-center space-x-2 px-3 py-2 glass-card hover:border-brand-cyan/50 hover:shadow-[0_0_15px_rgba(56,189,248,0.2)] group cursor-default transition-all duration-300"
+                  >
+                    {React.createElement(skill.icon, { 
+                      className: "text-brand-slate group-hover:text-brand-cyan transition-colors", 
+                      size: 18 
+                    })}
+                    <span className="text-sm font-medium text-brand-offwhite">{skill.name}</span>
+                  </div>
+                ))}
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Summary Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8"
-        >
-          <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-            <div className="text-3xl font-bold text-cyan-400 mb-2">
-              {techStack.filter(tech => tech.category === "Programming Languages").length}+
+        {/* Bottom Stat Strip */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-16 pt-8 border-t border-brand-border/20">
+          {stats.map((stat, i) => (
+            <div key={i} className="flex flex-col items-center sm:items-start">
+              <span className="text-3xl font-bold font-grotesk text-brand-cyan">{stat.value}</span>
+              <span className="text-sm text-brand-slate uppercase tracking-widest">{stat.label}</span>
             </div>
-            <div className="text-gray-300">Programming Languages</div>
-          </div>
-          
-          <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-            <div className="text-3xl font-bold text-purple-400 mb-2">
-              {techStack.filter(tech => tech.category === "Web Development").length}+
-            </div>
-            <div className="text-gray-300">Web Technologies</div>
-          </div>
-          
-          <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-            <div className="text-3xl font-bold text-blue-400 mb-2">
-              {techStack.filter(tech => tech.category === "UI Frameworks").length}+
-            </div>
-            <div className="text-gray-300">UI Frameworks</div>
-          </div>
-        </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

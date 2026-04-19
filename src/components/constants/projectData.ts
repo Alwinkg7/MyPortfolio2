@@ -1,22 +1,46 @@
-export const projects = [
+export const heroProject = {
+  id: 1,
+  title: "Shopify WhatsApp Automation System",
+  description:
+    "Built an event-driven automation system integrating Shopify webhooks with Meta WhatsApp API to deliver real-time order notifications, secure tracking links, and automated invoice generation.",
+  technologies: [
+    "ASP.NET Core",
+    "Shopify Webhooks",
+    "Meta WhatsApp API",
+    "SQL Server",
+    "Event-Driven Architecture",
+  ],
+  liveLink: "https://voleergo-store.myshopify.com/",
+};
+
+export const featuredProjects = [
   {
-    id: 1,
-    title: "FinBridge (AI-Powered Financial Management)",
+    id: 12,
+    title: "Smart Mess Management System",
     description:
-      "Developed an AI-powered financial management app using the MERN stack, integrating AI-based financial advice to improve user efficiency by 30%.",
+      "Full-stack system with QR-based attendance, real-time meal tracking, and automated billing with role-based dashboards.",
     technologies: [
-      "React",
-      "Node.js",
-      "Django",
-      "Express.js",
-      "MongoDB",
-      "Sklearn",
+      "ASP.NET Core",
+      "Next.js",
+      "SQL Server",
+      "JWT",
+      "QR Integration",
     ],
-    githubLink: "https://github.com/Alwinkg7/Personal-Finance-Manager.git",
-    liveLink: "https://finbridge-beta.vercel.app/guesthome",
+    liveLink: "https://messwebapp-ten.vercel.app/home",
   },
   {
-    id: 2,
+    id: 4,
+    title: "FinBridge",
+    description:
+      "AI-powered financial management app improving budgeting efficiency by 30%.",
+    technologies: ["React", "Node.js", "MongoDB", "AI"],
+    liveLink: "https://finbridge-beta.vercel.app/guesthome",
+  },
+];
+
+export const otherProjects = [
+  {
+    id: 5,
     title: "Edu.Inv (Fintech Web Application)",
     description:
       "Streamlined the educational loan application process, reducing average processing time from 10 days to 3 days. Improved user satisfaction ratings by 40% through enhanced communication features and user-friendly interface.",
@@ -32,7 +56,7 @@ export const projects = [
     githubLink: "https://github.com/Alwinkg7/BuyItNow.git",
   },
   {
-    id: 4,
+    id: 2,
     title: "Voleergo Academy",
     description:
       "Educational platform developed as part of Voleergo Solutions LLP projects using modern web technologies.",
@@ -40,7 +64,7 @@ export const projects = [
     liveLink: "https://voleergoacademy.com/",
   },
   {
-    id: 5,
+    id: 7,
     title: "E-commerce Platform (Development)",
     description:
       "Dynamic e-commerce solution for Voleergo Solutions LLP, featuring comprehensive online shopping capabilities.",
@@ -48,7 +72,7 @@ export const projects = [
     liveLink: "https://ecommerceqa.voleergo.com/website/home",
   },
   {
-    id: 6,
+    id: 3,
     title: "Kayaking Business Website",
     description:
       "Adventure tourism website developed for a kayaking business, showcasing services and booking capabilities.",
@@ -56,7 +80,7 @@ export const projects = [
     liveLink: "https://walkingtrees.in/",
   },
   {
-    id: 7,
+    id: 8,
     title: "Formly – Feedback System",
     description:
       "Developed a feedback system using PHP, React.JS, and MySQL with a module to display result analytics, handling frontend, backend, and database implementation.",
@@ -64,7 +88,7 @@ export const projects = [
     liveLink: "https://formly1.vercel.app/",
   },
   {
-    id: 8,
+    id: 9,
     title: "Land Cover Semantic Segmentation",
     description:
       "Achieved over 92% IoU in classifying satellite imagery using U-Net models with advanced machine learning techniques.",
@@ -72,7 +96,7 @@ export const projects = [
     githubLink: "https://github.com/Alwinkg7/Land-cover-segmentation.git",
   },
   {
-    id: 9,
+    id: 10,
     title: "Kochi Brew ☕️ – React Native Coffee App",
     description:
       "Mobile app built using Expo for a coffee shop menu and contact display. Includes light/dark themes, animations, reusable components, and Expo Router navigation.",
@@ -80,7 +104,7 @@ export const projects = [
     githubLink: "https://github.com/Alwinkg7/kochi-brew",
   },
   {
-    id: 10,
+    id: 11,
     title: "Personal Portfolio Website",
     description:
       "Modern portfolio website showcasing my projects, skills, and experience. Built with React, Tailwind CSS, and Framer Motion animations.",

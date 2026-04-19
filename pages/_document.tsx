@@ -65,7 +65,6 @@ export default function Document() {
         {/* Additional SEO Meta Tags */}
         <meta name="theme-color" content="#000000" />
         <meta name="msapplication-TileColor" content="#000000" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         {/* Favicon and Icons */}
         <link rel="icon" href="https://alwinkg.vercel.app/portfolio1.jpg" />
@@ -81,6 +80,14 @@ export default function Document() {
         <meta
           name="google-site-verification"
           content="google46dd96954ca14052"
+        />
+
+        {/* Google Fonts */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+          rel="stylesheet"
         />
 
         {/* Structured Data - JSON-LD */}

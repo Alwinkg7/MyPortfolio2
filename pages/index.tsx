@@ -3,86 +3,59 @@ import Head from "next/head";
 import Header from "../src/components/Header";
 import Hero from "../src/components/Hero";
 import About from "../src/components/About";
-import Qualifications from "../src/components/Qualifications";
 import Experience from "../src/components/Experience";
 import Projects from "../src/components/Projects";
 import Contact from "../src/components/Contact";
 import Footer from "../src/components/Footer";
-import ScrollToTop from "../src/components/ScrollToTop";
 import TechStack from "../src/components/TechStack";
 
 export default function Home() {
+  console.log({ Header, Hero, About, Experience, Projects, Contact, Footer, TechStack });
   return (
-    <>
+    <div className="bg-brand-navy">
       <Head>
-        <title>
-          Alwin K G - Full Stack Developer & Software Engineer Portfolio
-        </title>
+        <title>Alwin K G | Full Stack Developer & ASP.NET Specialist</title>
         <meta
           name="description"
-          content="Experienced Full Stack Developer specializing in React, Node.js, TypeScript, and modern web technologies. View my portfolio showcasing web applications, mobile apps, and software solutions."
+          content="Backend-focused Software Developer specializing in ASP.NET Core, React, and system design. 1 year of professional experience building scalable production systems."
         />
         <meta
           name="keywords"
-          content="Full Stack Developer, React Developer, Node.js Developer, TypeScript, JavaScript, Web Developer, Software Engineer, Frontend Developer, Backend Developer, Portfolio, Web Applications, Mobile Apps, Software Development, Next.js, Express.js, MongoDB, PostgreSQL, AWS, Docker, Git, Agile Development"
+          content="Alwin K G, Full Stack Developer, ASP.NET Core, .NET Developer, Software Engineer Kochi, React Developer, Next.js, Fintech Developer"
         />
-
-        {/* Additional page-specific meta tags */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-
-        {/* Open Graph for this specific page */}
-        <meta
-          property="og:title"
-          content="Alwin K G - Full Stack Developer Portfolio"
-        />
-        <meta
-          property="og:description"
-          content="Experienced Full Stack Developer specializing in React, Node.js, TypeScript, and modern web technologies. View my portfolio showcasing web applications, mobile apps, and software solutions."
-        />
+        <link rel="canonical" href="https://alwinkg.vercel.app" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Alwin K G | Full Stack Developer Portfolio" />
+        <meta property="og:description" content="Immersive portfolio of Alwin K G - Software Developer specialized in ASP.NET Core and Full Stack systems." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://alwinkg.vercel.app" />
-        <meta
-          property="og:image"
-          content="https://alwinkg.vercel.app/portfolio1.jpg"
-        />
+        <meta property="og:image" content="https://alwinkg.vercel.app/portfolio1.jpg" />
 
-        {/* Twitter Card */}
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Alwin K G - Full Stack Developer Portfolio"
-        />
-        <meta
-          name="twitter:description"
-          content="Experienced Full Stack Developer specializing in React, Node.js, TypeScript, and modern web technologies. View my portfolio showcasing web applications, mobile apps, and software solutions."
-        />
-        <meta
-          name="twitter:image"
-          content="https://alwinkg.vercel.app/portfolio1.jpg"
-        />
-
-        {/* Canonical URL */}
-        <link rel="canonical" href="https://alwinkg.vercel.app" />
+        <meta name="twitter:title" content="Alwin K G | Full Stack Portfolio" />
+        <meta name="twitter:image" content="https://alwinkg.vercel.app/portfolio1.jpg" />
       </Head>
 
-      <div className="scroll-smooth font-sans text-gray-800 overflow-x-hidden">
+      <div className="relative">
         <Header />
-        <main className="relative">
-          {/* Hero Section - Full height */}
-          <Hero />
-
-          {/* Other Sections */}
-          <About />
-          <Qualifications />
-          <Experience />
-          <TechStack />
-          <Projects />
-          <Contact />
+        
+        <main>
+          {/* Slide Snap Container */}
+          <div className="relative">
+            <Hero />
+            <About />
+            <TechStack />
+            <Experience />
+            <Projects />
+            <Contact />
+          </div>
         </main>
+
         <Footer />
-        <ScrollToTop />
       </div>
-    </>
+    </div>
   );
 }
