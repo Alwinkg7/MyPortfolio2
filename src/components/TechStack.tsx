@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import {
   SiJavascript, SiPython,
   SiDotnet, SiDjango, SiNodedotjs, SiExpress,
-  SiReact, SiNextdotjs, SiTypescript, SiHtml5, SiCss3,
+  SiReact, SiNextdotjs, SiTypescript, SiHtml5, SiCss,
   SiMysql, SiMongodb, SiTailwindcss, SiChakraui, SiMui, SiBootstrap,
   SiGit, SiPostman, SiVercel, SiRender, SiPostgresql
 } from "react-icons/si";
@@ -12,7 +12,7 @@ import { FaMicrosoft } from "react-icons/fa";
 
 interface Skill {
   name: string;
-  icon: any;
+  icon: React.ElementType;
 }
 
 interface Category {
@@ -47,7 +47,7 @@ const TechStack = () => {
         { name: "TypeScript", icon: SiTypescript },
         { name: "JavaScript", icon: SiJavascript },
         { name: "HTML5", icon: SiHtml5 },
-        { name: "CSS3", icon: SiCss3 },
+        { name: "CSS3", icon: SiCss },
       ],
     },
     {
@@ -92,7 +92,7 @@ const TechStack = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-10 w-full flex flex-col justify-center min-h-screen py-20">
 
         <div className="space-y-4 mb-12">
-          <span className="text-brand-cyan font-mono text-sm tracking-widest uppercase">03. Tech Stack</span>
+          <span className="text-brand-cyan font-mono text-sm tracking-widest uppercase">04. Tech Stack</span>
           <h2 className="text-4xl md:text-5xl font-grotesk font-bold text-brand-offwhite">
             Tools I Build With
           </h2>

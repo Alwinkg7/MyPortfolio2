@@ -29,13 +29,6 @@ const qualifications = [
     color: 'from-purple-500 to-pink-500',
     items: [
       {
-        title: 'Python Essentials 1',
-        institution: 'Cisco Networking Academy',
-        duration: 'Completed',
-        grade: 'Certified',
-        description: 'Fundamental Python programming and development practices'
-      },
-      {
         title: 'Cloud Computing',
         institution: 'NPTEL Swayam',
         duration: 'Completed',
@@ -49,40 +42,30 @@ const qualifications = [
         grade: 'Certificate of Excellence',
         description: 'Recognized for outstanding performance among 1500+ submissions'
       },
-      {
-        title: 'Full Stack Web Development',
-        institution: 'EY GDS with Edunet Foundation and AICTE',
-        duration: 'Feb – Mar 2025',
-        grade: 'Certificate of Completion',
-        description: 'MERN stack development and AI tools integration'
-      },
+      
     ],
   },
 ];
 
 const Qualifications = () => {
   return (
-    <section
-      id="qualifications"
-      className="min-h-screen px-6 py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 text-gray-800 relative overflow-hidden"
-    >
-      {/* Background Effects */}
-      <div className="absolute inset-0 opacity-40">
-        <div className="w-full h-full bg-gradient-to-r from-blue-500/10 to-purple-500/10"></div>
-      </div>
-      
-      <div className="max-w-6xl mx-auto relative z-10">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+    <section id="qualifications" className="slide-section bg-brand-navy">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 w-full flex flex-col justify-center min-h-screen py-20">
+        
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+          className="space-y-4 mb-16"
         >
-          Education & Certifications
-        </motion.h2>
+          <span className="text-brand-cyan font-mono text-sm tracking-widest uppercase">03. Qualifications</span>
+          <h2 className="text-4xl md:text-5xl font-grotesk font-bold text-brand-offwhite">
+            Education & Certifications
+          </h2>
+        </motion.div>
 
-        <div className="space-y-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {qualifications.map((section, sectionIndex) => (
             <motion.div
               key={section.type}
@@ -92,76 +75,52 @@ const Qualifications = () => {
               transition={{ duration: 0.6, delay: sectionIndex * 0.2 }}
               className="space-y-8"
             >
-              {/* Section Header */}
-              <div className="text-center">
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  className="inline-flex items-center gap-3 mb-4"
-                >
-                  <span className="text-4xl">{section.icon}</span>
-                  <h3 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                    {section.type}
-                  </h3>
-                </motion.div>
+              {/* Category Subheader */}
+              <div className="flex items-center gap-3">
+                <span className="text-2xl">{section.icon}</span>
+                <h3 className="text-2xl font-bold font-grotesk text-brand-offwhite uppercase tracking-wider">
+                  {section.type}
+                </h3>
               </div>
 
               {/* Items Grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="space-y-6">
                 {section.items.map((item, itemIndex) => (
                   <motion.div
                     key={itemIndex}
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: itemIndex * 0.1 }}
-                    whileHover={{ scale: 1.02, y: -5 }}
-                    className="group relative bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/20 overflow-hidden"
+                    whileHover={{ x: 10 }}
+                    className="glass-card p-6 md:p-8 space-y-4 border-l-4 border-l-brand-cyan group"
                   >
-                    {/* Background Gradient */}
-                    <div className={`absolute inset-0 bg-gradient-to-r ${section.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
-                    
-                    <div className="relative z-10 p-6">
-                      {/* Header */}
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="flex-1">
-                          <h4 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-                            {item.title}
-                          </h4>
-                          <p className="text-lg font-semibold text-blue-600 mb-1">
-                            {item.institution}
-                          </p>
-                          <div className="flex items-center gap-4 text-sm text-gray-500">
-                            <span className="flex items-center gap-1">
-                              📅 {item.duration}
-                            </span>
-                            <span className="flex items-center gap-1">
-                              🎯 {item.grade}
-                            </span>
-                          </div>
-                        </div>
-                        
-                        {/* Icon */}
-                        <motion.div
-                          whileHover={{ rotate: 360 }}
-                          transition={{ duration: 0.6 }}
-                          className="text-2xl opacity-60 group-hover:opacity-100 transition-opacity"
-                        >
-                          {section.icon}
-                        </motion.div>
+                    <div className="flex justify-between items-start gap-4">
+                      <div className="space-y-1">
+                        <h4 className="text-xl font-bold text-brand-offwhite font-grotesk group-hover:text-brand-cyan transition-colors">
+                          {item.title}
+                        </h4>
+                        <p className="text-brand-cyan font-medium">
+                          {item.institution}
+                        </p>
                       </div>
-
-                      {/* Description */}
-                      <p className="text-gray-600 text-sm leading-relaxed">
-                        {item.description}
-                      </p>
-
-                      {/* Hover Effect */}
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        whileHover={{ opacity: 1 }}
-                        className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-2xl"
-                      />
+                      <div className="text-right shrink-0">
+                        <div className="text-xs font-mono text-brand-slate uppercase tracking-widest bg-brand-navy/50 px-2 py-1 rounded border border-brand-border/30">
+                          {item.duration}
+                        </div>
+                      </div>
                     </div>
+
+                    <div className="flex items-center gap-4 text-sm text-brand-slate border-t border-brand-border/20 pt-4">
+                      <div className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span>
+                        {item.grade}
+                      </div>
+                    </div>
+
+                    <p className="text-brand-slate text-sm leading-relaxed">
+                      {item.description}
+                    </p>
                   </motion.div>
                 ))}
               </div>
@@ -169,27 +128,29 @@ const Qualifications = () => {
           ))}
         </div>
 
-        {/* Summary Stats */}
+        {/* Global Summary Stats (Optional but themed) */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4"
         >
-          <div className="text-center p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-white/20">
-            <div className="text-3xl font-bold text-blue-600 mb-2">8.67</div>
-            <div className="text-gray-600">MCA CGPA</div>
+          <div className="glass-card p-4 text-center">
+            <div className="text-2xl font-bold text-brand-cyan">8.67</div>
+            <div className="text-[10px] text-brand-slate uppercase tracking-widest">MCA CGPA</div>
           </div>
-          
-          <div className="text-center p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-white/20">
-            <div className="text-3xl font-bold text-purple-600 mb-2">Top 40</div>
-            <div className="text-gray-600">EY GDS Recognition</div>
+          <div className="glass-card p-4 text-center">
+            <div className="text-2xl font-bold text-brand-cyan">Top 40</div>
+            <div className="text-[10px] text-brand-slate uppercase tracking-widest">Global Ranking</div>
           </div>
-          
-          <div className="text-center p-6 bg-white/60 backdrop-blur-sm rounded-xl border border-white/20">
-            <div className="text-3xl font-bold text-green-600 mb-2">4+</div>
-            <div className="text-gray-600">Certifications</div>
+          <div className="glass-card p-4 text-center">
+            <div className="text-2xl font-bold text-brand-cyan">4+</div>
+            <div className="text-[10px] text-brand-slate uppercase tracking-widest">Global Certs</div>
+          </div>
+          <div className="glass-card p-4 text-center">
+            <div className="text-2xl font-bold text-brand-cyan">Distinction</div>
+            <div className="text-[10px] text-brand-slate uppercase tracking-widest">Academic Status</div>
           </div>
         </motion.div>
       </div>

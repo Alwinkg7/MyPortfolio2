@@ -34,9 +34,9 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-10 w-full flex flex-col justify-center min-h-screen py-20">
         
         <div className="space-y-4 mb-12 text-center md:text-left">
-          <span className="text-brand-cyan font-mono text-sm tracking-widest uppercase">06. Contact</span>
+          <span className="text-brand-cyan font-mono text-sm tracking-widest uppercase">07. Contact</span>
           <h2 className="text-4xl md:text-6xl font-grotesk font-bold text-brand-offwhite leading-tight">
-            Let's Build Something <br /> <span className="text-brand-cyan">Together</span>
+            {"Let's Build Something"} <br /> <span className="text-brand-cyan">Together</span>
           </h2>
           <p className="text-brand-slate text-lg max-w-2xl">
             Open to full-time roles, freelance projects, and collaborations. 
@@ -113,7 +113,7 @@ const Contact = () => {
             {/* Availability Note */}
             <div className="p-6 rounded-2xl border border-brand-border/20 bg-brand-surface/20">
               <p className="text-brand-slate text-sm italic">
-                "I typically respond within 24 hours. Based in Thrissur, Kerala (GMT+5:30). Let's chat about how I can contribute to your team!"
+                {"I typically respond within 24 hours. Based in Thrissur, Kerala (GMT+5:30). Let's chat about how I can contribute to your team!"}
               </p>
             </div>
           </div>

@@ -73,7 +73,7 @@ const Hero = () => {
 
   return (
     <section id="hero" className="slide-section overflow-hidden bg-glow-radial">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 w-full grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 items-center h-full">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 w-full grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 items-center h-full pt-28 md:pt-0">
 
         {/* Left Content (60%) */}
         <motion.div
@@ -90,7 +90,7 @@ const Hero = () => {
 
           <div className="space-y-4">
             <h2 className="text-xl md:text-2xl text-brand-slate font-grotesk font-medium">
-              Hi, I'm
+              {"Hi, I'm"}
             </h2>
             <h1 className="text-6xl md:text-8xl font-grotesk font-extrabold text-brand-offwhite leading-none">
               <span className="text-brand-cyan text-glow-cyan">
@@ -106,8 +106,7 @@ const Hero = () => {
           </div>
 
           <p className="text-brand-slate text-lg leading-relaxed max-w-xl">
-            MCA graduate building production-grade web apps —
-            from AI-powered fintech platforms to scalable e-commerce systems.
+            {"MCA graduate building production-grade web apps — from AI-powered fintech platforms to scalable e-commerce systems."}
           </p>
 
           <div className="flex flex-wrap gap-4 pt-4">

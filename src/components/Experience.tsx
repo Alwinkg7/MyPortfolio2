@@ -14,7 +14,7 @@ const experiences = [
       "Implemented optimized SQL Server stored procedures for business logic and high-performance data handling.",
       "Mentored interns on API development and clean coding practices.",
     ],
-    tags: ["Voleergo Academy", "E-commerce", "Kayaking Site"],
+    tags: ["Voleergo Academy", "E-commerce", "Walking Trees", "Shopify Store with WhatsApp Automation System", "Role Management System"],
   },
   {
     company: "Calanjiyum Consultancies",
@@ -47,9 +47,9 @@ const Experience = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-10 w-full flex flex-col justify-center min-h-screen py-20">
         
         <div className="space-y-4 mb-16">
-          <span className="text-brand-cyan font-mono text-sm tracking-widest uppercase">04. Experience</span>
+          <span className="text-brand-cyan font-mono text-sm tracking-widest uppercase">05. Experience</span>
           <h2 className="text-4xl md:text-5xl font-grotesk font-bold text-brand-offwhite">
-            Where I've Worked
+            {"Where I've Worked"}
           </h2>
         </div>
 

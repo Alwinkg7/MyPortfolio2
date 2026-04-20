@@ -80,9 +80,9 @@ const Projects = () => {
         
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
           <div className="space-y-4">
-            <span className="text-brand-cyan font-mono text-sm tracking-widest uppercase">05. Projects</span>
+            <span className="text-brand-cyan font-mono text-sm tracking-widest uppercase">06. Projects</span>
             <h2 className="text-4xl md:text-5xl font-grotesk font-bold text-brand-offwhite">
-              Things I've Built
+              {"Things I've Built"}
             </h2>
           </div>
 

@@ -3,14 +3,16 @@ import Head from "next/head";
 import Header from "../src/components/Header";
 import Hero from "../src/components/Hero";
 import About from "../src/components/About";
+import Qualifications from "../src/components/Qualifications";
 import Experience from "../src/components/Experience";
 import Projects from "../src/components/Projects";
 import Contact from "../src/components/Contact";
 import Footer from "../src/components/Footer";
 import TechStack from "../src/components/TechStack";
+import ScrollToTop from "../src/components/ScrollToTop";
 
 export default function Home() {
-  console.log({ Header, Hero, About, Experience, Projects, Contact, Footer, TechStack });
+  console.log({ Header, Hero, About, Qualifications, Experience, Projects, Contact, Footer, TechStack, ScrollToTop });
   return (
     <div className="bg-brand-navy">
       <Head>
@@ -47,6 +49,7 @@ export default function Home() {
           <div className="relative">
             <Hero />
             <About />
+            <Qualifications />
             <TechStack />
             <Experience />
             <Projects />
@@ -55,6 +58,7 @@ export default function Home() {
         </main>
 
         <Footer />
+        <ScrollToTop />
       </div>
     </div>
   );

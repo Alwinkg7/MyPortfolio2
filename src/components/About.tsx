@@ -66,7 +66,9 @@ const About = () => {
 
           <div className="space-y-4 text-brand-slate text-lg leading-relaxed">
             <p>
-              I'm <span className="text-brand-offwhite font-medium">Alwin K G</span>, a backend-focused Software Developer specializing in ASP.NET Core and system design.
+              {"I'm "}
+              <span className="text-brand-offwhite font-medium">Alwin K G</span>
+              {", a backend-focused Software Developer specializing in ASP.NET Core and system design."}
             </p>
             <p>
               My journey is driven by a passion for building real-world applications—from event-driven automation systems to complex financial workflows that handle production-grade volume.
