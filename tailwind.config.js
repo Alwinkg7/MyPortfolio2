@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,33 +8,34 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: {
-          navy: "#0F172A",
-          surface: "#1E293B",
-          cyan: "#38BDF8",
-          slate: "#94A3B8",
-          offwhite: "#F1F5F9",
-          border: "#334155",
-          success: "#22C55E",
-        },
+        // Design-system tokens. Each maps to a CSS variable so a single theme
+        // definition drives both dark (default) and light modes.
+        bg: "rgb(var(--bg) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
+        elevated: "rgb(var(--elevated) / <alpha-value>)",
+        fg: "rgb(var(--fg) / <alpha-value>)",
+        muted: "rgb(var(--muted) / <alpha-value>)",
+        faint: "rgb(var(--faint) / <alpha-value>)",
+        line: "rgb(var(--line) / <alpha-value>)",
+        accent: "rgb(var(--accent) / <alpha-value>)",
+        "accent-ink": "rgb(var(--accent-ink) / <alpha-value>)",
       },
       fontFamily: {
-        inter: ["Inter", "sans-serif"],
-        grotesk: ["Space Grotesk", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"],
+        sans: ["Inter", "system-ui", "sans-serif"],
+        display: ["Space Grotesk", "Inter", "sans-serif"],
+        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
       },
-      animation: {
-        'glow-pulse': 'glow-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      letterSpacing: {
+        tightest: "-0.045em",
+        tighter: "-0.03em",
       },
-      keyframes: {
-        'glow-pulse': {
-          '0%, 100%': { opacity: 1, filter: 'brightness(1)' },
-          '50%': { opacity: 0.7, filter: 'brightness(1.5)' },
-        },
+      maxWidth: {
+        shell: "90rem",
+      },
+      transitionTimingFunction: {
+        editorial: "cubic-bezier(0.16, 1, 0.3, 1)",
       },
     },
   },
-  plugins: [
-    require('lightswind/plugin'),
-  ],
-}
+  plugins: [],
+};

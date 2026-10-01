@@ -1,7 +1,7 @@
 {
-  "short_name": "Alwin K G Portfolio",
-  "name": "Alwin K G - Full Stack Developer Portfolio",
-  "description": "Experienced Full Stack Developer specializing in React, Node.js, TypeScript, and modern web technologies",
+  "short_name": "Alwin K G",
+  "name": "Alwin K G — Software Engineer · Backend & Full-Stack Developer",
+  "description": "Software Engineer and Technical Lead building production web applications with C#, ASP.NET Core, SQL Server, Next.js and React.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -21,8 +21,8 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff",
+  "theme_color": "#08090B",
+  "background_color": "#08090B",
   "categories": ["portfolio", "developer", "software", "technology"],
   "lang": "en",
   "scope": "/",

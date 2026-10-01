@@ -2,59 +2,176 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   DESIGN TOKENS
+   Dark-first. Light mode is deliberately redefined, not inverted.
+   Accent is a single token — swap --accent to re-skin the site.
+   ============================================================ */
+:root {
+  --bg: 8 9 11; /* #08090B */
+  --surface: 14 16 19; /* #0E1013 */
+  --elevated: 21 24 28; /* #15181C */
+  --fg: 231 233 236; /* #E7E9EC */
+  --muted: 138 144 153; /* #8A9099 */
+  --faint: 74 79 87; /* #4A4F57 */
+  --line: 255 255 255; /* used at low alpha for hairlines */
+  --line-alpha: 0.09;
+  --accent: 214 255 63; /* #D6FF3F electric lime */
+  --accent-ink: 8 9 11; /* ink that sits on the accent */
+  --grain-opacity: 0.035;
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: 245 245 243;
+  --surface: 255 255 255;
+  --elevated: 255 255 255;
+  --fg: 18 20 23;
+  --muted: 90 96 104;
+  --faint: 176 180 186;
+  --line: 0 0 0;
+  --line-alpha: 0.1;
+  --accent: 44 46 40;
+  --accent-ink: 245 255 180;
+  --grain-opacity: 0.02;
+  color-scheme: light;
+}
+
 @layer base {
-  html {
-    scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
+  * {
+    border-color: rgb(var(--line) / var(--line-alpha));
   }
-  
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  /* Lenis drives scrolling; let it own the behavior when active. */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
   body {
-    @apply bg-brand-navy text-brand-offwhite font-inter;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    @apply bg-bg text-fg font-sans antialiased;
     overflow-x: hidden;
+    font-feature-settings: "ss01", "cv05", "cv11";
+  }
+
+  ::selection {
+    background: rgb(var(--accent));
+    color: rgb(var(--accent-ink));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1, h2, h3 {
+    @apply font-display tracking-tighter;
+    text-wrap: balance;
   }
 }
 
 @layer components {
-  .slide-section {
-    @apply min-h-screen w-full relative flex items-center justify-center;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+  .shell {
+    @apply mx-auto w-full max-w-shell px-5 sm:px-8 lg:px-12;
   }
 
-  .glass-nav {
-    @apply backdrop-blur-md bg-brand-navy/80 border-b border-brand-border/20;
+  /* Monospace editorial section label: // 01 — SYSTEMS */
+  .eyebrow {
+    @apply font-mono text-[0.7rem] uppercase tracking-[0.28em] text-muted;
   }
 
-  .glass-card {
-    @apply bg-brand-surface/40 backdrop-blur-sm border border-brand-border/30 rounded-xl transition-all duration-300;
+  .hairline {
+    @apply border-t border-line;
   }
 
-  .btn-primary {
-    @apply bg-brand-cyan text-brand-navy font-bold px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(56,189,248,0.4)] hover:scale-105 active:scale-95;
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
-
-  .btn-ghost {
-    @apply border border-brand-cyan text-brand-cyan font-bold px-6 py-3 rounded-lg transition-all duration-300 hover:bg-brand-cyan/10 hover:scale-105 active:scale-95;
-  }
-
-  .text-glow-cyan {
-    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
-  }
-
-  .cyan-dot-separator::after {
-    content: "·";
-    @apply text-brand-cyan mx-2 font-bold;
+  .link-underline:hover {
+    background-size: 100% 1px;
   }
 }
 
-/* Custom transitions */
-.transition-snappy {
-  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+@layer utilities {
+  .fluid-display {
+    font-size: clamp(2.75rem, 11vw, 11rem);
+    line-height: 0.92;
+  }
+  .fluid-h2 {
+    font-size: clamp(2rem, 6vw, 4.5rem);
+    line-height: 0.98;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  /* Technical grid column rules, shown only on wide screens */
+  .grid-rules {
+    background-image: repeating-linear-gradient(
+      to right,
+      transparent,
+      transparent calc(8.333% - 1px),
+      rgb(var(--line) / var(--line-alpha)) calc(8.333% - 1px),
+      rgb(var(--line) / var(--line-alpha)) 8.333%
+    );
+  }
 }
 
-/* Background Glows */
-.bg-glow-radial {
-  background: radial-gradient(circle at center, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+/* Film grain overlay — fixed, non-interactive, cheap */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Custom cursor is opt-in on fine-pointer devices only */
+@media (hover: hover) and (pointer: fine) {
+  body.has-cursor {
+    cursor: none;
+  }
+  body.has-cursor a,
+  body.has-cursor button,
+  body.has-cursor [data-cursor] {
+    cursor: none;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION — collapse non-essential motion to instant.
+   Content is never hidden behind animation, so this is safe.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .grain {
+    display: none;
+  }
 }
