@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import Image from "next/image";
 import {
   AnimatePresence,
   motion,
@@ -39,6 +40,7 @@ export default function Identity() {
   const bgShift = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const gridOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1, 0.5]);
   const blobY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const portraitY = useTransform(scrollYProgress, [0, 1], ["-28px", "28px"]);
 
   return (
     <Section id="identity">
@@ -58,6 +60,28 @@ export default function Identity() {
             <div className="h-full w-full rounded-full bg-accent" />
           </motion.div>
 
+          {/* Desktop portrait — art-directed editorial frame with scroll parallax */}
+          <div className="absolute right-[4%] top-1/2 hidden -translate-y-1/2 lg:block xl:right-[7%]">
+            <motion.div
+              style={{ y: portraitY }}
+              className="relative h-[27rem] w-[20rem] overflow-hidden border border-line xl:h-[30rem] xl:w-[22rem]"
+            >
+              <Image
+                src="/portfolio1.jpg"
+                alt={`Portrait of ${profile.name}`}
+                fill
+                sizes="22rem"
+                priority
+                className="object-cover grayscale contrast-[1.05]"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/70 via-transparent to-transparent" />
+              <div className="pointer-events-none absolute inset-0 border border-accent/0" />
+              <span className="absolute bottom-3 left-3 font-mono text-[0.6rem] uppercase tracking-[0.25em] text-fg/80">
+                {profile.name} — &apos;26
+              </span>
+            </motion.div>
+          </div>
+
           <div className="shell relative">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -73,9 +97,11 @@ export default function Identity() {
               {profile.name.toUpperCase()}
             </h1>
 
-            {/* Role stepper — exactly one role visible at a time */}
-            <div className="mt-6 flex h-[1.5em] items-center overflow-hidden sm:mt-10">
-              <div className="relative flex w-full items-center font-display text-xl font-light tracking-tight text-muted sm:text-3xl md:text-4xl">
+            {/* Role stepper — exactly one role visible at a time.
+                No overflow-hidden here: a fixed-height clip was cropping letter
+                descenders. min-h reserves space during the AnimatePresence swap. */}
+            <div className="mt-6 flex min-h-[1.5em] items-center sm:mt-10">
+              <div className="relative flex w-full items-center font-display text-xl font-light leading-[1.3] tracking-tight text-muted sm:text-3xl md:text-4xl">
                 {/* progress counter */}
                 <span className="mr-4 font-mono text-xs text-faint sm:text-sm">
                   0{idx + 1}
@@ -83,11 +109,11 @@ export default function Identity() {
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={role}
-                    initial={{ opacity: 0, y: "0.5em" }}
+                    initial={{ opacity: 0, y: "0.3em" }}
                     animate={{ opacity: 1, y: "0em" }}
-                    exit={{ opacity: 0, y: "-0.5em" }}
-                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    className={`whitespace-nowrap ${isLead ? "text-accent" : "text-fg"}`}
+                    exit={{ opacity: 0, y: "-0.3em" }}
+                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                    className={`inline-block whitespace-nowrap pb-[0.12em] ${isLead ? "text-accent" : "text-fg"}`}
                   >
                     {role}
                   </motion.span>
@@ -103,6 +129,24 @@ export default function Identity() {
             >
               {profile.summary}
             </motion.p>
+
+            {/* Mobile portrait */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-10 lg:hidden"
+            >
+              <div className="relative h-52 w-40 overflow-hidden border border-line">
+                <Image
+                  src="/portfolio1.jpg"
+                  alt={`Portrait of ${profile.name}`}
+                  fill
+                  sizes="10rem"
+                  className="object-cover grayscale contrast-[1.05]"
+                />
+              </div>
+            </motion.div>
           </div>
 
           {/* scroll hint */}
