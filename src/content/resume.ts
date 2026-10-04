@@ -1,6 +1,6 @@
 /**
  * SINGLE SOURCE OF TRUTH
- * Every string below is taken from alwinkg_full-stack_resume.pdf.
+ * Every string below is taken from alwinkg_resume.pdf.
  * Nothing here is invented. If you change your resume, change this file.
  */
 
@@ -15,7 +15,7 @@ export const profile = {
   githubHandle: "github.com/Alwinkg7",
   linkedin: "https://linkedin.com/in/alwin-k-g",
   linkedinHandle: "linkedin.com/in/alwin-k-g",
-  resumeUrl: "/alwinkg_full-stack_resume.pdf",
+  resumeUrl: "/alwinkg_resume.pdf",
   summary:
     "Software Engineer with 1+ year of professional experience developing and supporting production web applications using C#, ASP.NET Core, SQL Server, Next.js, and React. Hands-on experience in REST API development, business logic, database programming, authentication and authorization, frontend integration, third-party APIs, logging, and production troubleshooting.",
 } as const;
