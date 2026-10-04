@@ -1,4 +1,4 @@
-import { profile } from "@/content/resume";
+import { emailComposeUrl, profile } from "@/content/resume";
 
 export default function SiteFooter() {
   const year = new Date().getFullYear();
@@ -36,7 +36,9 @@ export default function SiteFooter() {
               LinkedIn
             </a>
             <a
-              href={`mailto:${profile.email}`}
+              href={emailComposeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               data-cursor="SEND"
               className="font-mono text-xs uppercase tracking-[0.2em] text-muted link-underline hover:text-fg"
             >

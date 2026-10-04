@@ -1,14 +1,14 @@
 import { useRef } from "react";
-import { motion } from "framer-motion";
 import {
   certifications,
   education,
+  emailComposeUrl,
   profile,
 } from "@/content/resume";
 import { Eyebrow, Reveal, Section } from "../primitives";
 
 const LINKS = [
-  { label: "Email", value: profile.email, href: `mailto:${profile.email}`, cursor: "SEND" },
+  { label: "Email", value: profile.email, href: emailComposeUrl, cursor: "SEND" },
   { label: "LinkedIn", value: profile.linkedinHandle, href: profile.linkedin, cursor: "OPEN ↗" },
   { label: "GitHub", value: profile.githubHandle, href: profile.github, cursor: "OPEN ↗" },
 ];

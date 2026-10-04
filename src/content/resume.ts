@@ -20,6 +20,8 @@ export const profile = {
     "Software Engineer with 1+ year of professional experience developing and supporting production web applications using C#, ASP.NET Core, SQL Server, Next.js, and React. Hands-on experience in REST API development, business logic, database programming, authentication and authorization, frontend integration, third-party APIs, logging, and production troubleshooting.",
 } as const;
 
+export const emailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(profile.email)}`;
+
 /** Scroll-morphing role sequence for the opening section. */
 export const roleMorph = [
   "Software Engineer",
